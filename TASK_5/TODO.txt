@@ -1,0 +1,36 @@
+qlib_env\Scripts\activate
+
+DONE-check the model preparation stage in qlib library
+DONE-different type of model
+
+
+DONE-"RSI55, ...,",super_trend,...(technical_indicator)
+DONE-to use custom data set we have to change in to Qlib format
+
+
+-model extraction
+
+-smart_prediction-stock selection using models
+-test model-E:\Finance Internship\TASK_5\qlib\examples\benchmarks\LSTM
+
+-models
+-^NSEI:https://finance.yahoo.com/quote/%5ENSEI/ {2 years old}
+
+
+
+#how it works! RobustZScoreNorm
+#train model with raw values
+
+DONE-ALPHA_158,360 dataset:
+ 
+    -Data_description.txt
+    -AI_in_qlib.txt
+    -Models_Qlib_Info.txt
+    -Models_comparison.txt
+    
+    -Return_types.txt
+    -Risk_management.txt
+
+
+    -qlib_^NSEI_data_info.txt
+    -model_info.txt

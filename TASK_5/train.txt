@@ -1,0 +1,27 @@
+(qlib_env) E:\Finance Internship\TASK_5>python train.py
+[7448:MainThread](2025-04-09 15:40:52,342) INFO - qlib.Initialization - [config.py:420] - default_conf: client.
+[7448:MainThread](2025-04-09 15:40:52,342) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[7448:MainThread](2025-04-09 15:40:52,342) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': WindowsPath('C:/Users/ASUS/.qlib/qlib_data/us_data')}
+[7448:MainThread](2025-04-09 15:42:07,878) INFO - qlib.timer - [log.py:127] - Time cost: 67.820s | Loading data Done
+[7448:MainThread](2025-04-09 15:42:09,808) INFO - qlib.timer - [log.py:127] - Time cost: 0.896s | DropnaLabel Done
+[7448:MainThread](2025-04-09 15:42:13,071) INFO - qlib.timer - [log.py:127] - Time cost: 3.251s | CSZScoreNorm Done
+[7448:MainThread](2025-04-09 15:42:13,167) INFO - qlib.timer - [log.py:127] - Time cost: 5.288s | fit & process data Done
+[7448:MainThread](2025-04-09 15:42:13,167) INFO - qlib.timer - [log.py:127] - Time cost: 73.110s | Init data Done
+[7448:MainThread](2025-04-09 15:42:13,182) INFO - qlib.workflow - [exp.py:258] - Experiment 779388249237339289 starts running ...
+[7448:MainThread](2025-04-09 15:42:13,690) INFO - qlib.workflow - [recorder.py:345] - Recorder 18e9631f9c574e899e683df5ba3f2e1c starts running under Experiment 779388249237339289 ...
+
+
+Training until validation scores don't improve for 50 rounds
+[20]    train's l2: 0.995832    valid's l2: 0.997988
+[40]    train's l2: 0.994445    valid's l2: 0.998006
+Early stopping, best iteration is:
+[8]     train's l2: 0.996906    valid's l2: 0.997973
+
+[7448:MainThread](2025-04-09 15:42:31,107) INFO - qlib.timer - [log.py:127] - Time cost: 0.621s | waiting `async_log` Done
+                         $close      $volume
+instrument datetime
+AAPL       2010-01-04  8.326224  453228352.0
+           2010-01-05  8.340618  552529920.0
+           2010-01-06  8.207952  506865600.0
+           2010-01-07  8.192778  437991520.0
+           2010-01-08  8.247245  410892800.0

@@ -1,0 +1,42 @@
+(qlib_env) PS E:\Finance Internship\TASK_5\^NSEI> python .\model_raw.py
+[16988:MainThread](2025-04-21 15:48:25,110) INFO - qlib.Initialization - [config.py:420] - default_conf: client.
+[16988:MainThread](2025-04-21 15:48:25,114) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[16988:MainThread](2025-04-21 15:48:25,114) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': WindowsPath('C:/Users/ASUS/.qlib/qlib_data/NSEI_raw')}
+[16988:MainThread](2025-04-21 15:48:29,952) INFO - qlib.timer - [log.py:127] - Time cost: 0.155s | Loading data Done
+[16988:MainThread](2025-04-21 15:48:29,952) INFO - qlib.timer - [log.py:127] - Time cost: 0.000s | FilterCol Done
+E:\Finance Internship\qlib_env\lib\site-packages\qlib\data\dataset\processor.py:301: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame. 
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df[self.cols] = X
+[16988:MainThread](2025-04-21 15:48:29,973) INFO - qlib.timer - [log.py:127] - Time cost: 0.009s | RobustZScoreNorm Done
+[16988:MainThread](2025-04-21 15:48:29,975) INFO - qlib.timer - [log.py:127] - Time cost: 0.001s | FilterCol Done
+[16988:MainThread](2025-04-21 15:48:29,985) INFO - qlib.timer - [log.py:127] - Time cost: 0.008s | RobustZScoreNorm Done
+[16988:MainThread](2025-04-21 15:48:29,986) INFO - qlib.timer - [log.py:127] - Time cost: 0.032s | fit & process data Done
+[16988:MainThread](2025-04-21 15:48:29,986) INFO - qlib.timer - [log.py:127] - Time cost: 0.188s | Init data Done
+
+Dataset information:
+Training data shapes:
+('feature', 'MA5') shape: (422,)
+('feature', 'MA10') shape: (422,)
+('feature', 'MA20') shape: (422,)
+[60]    train's l2: 3.76804e-05 valid's l2: 6.65082e-05
+[80]    train's l2: 3.4015e-05  valid's l2: 6.83367e-05
+[60]    train's l2: 3.76804e-05 valid's l2: 6.65082e-05
+[80]    train's l2: 3.4015e-05  valid's l2: 6.83367e-05
+[100]   train's l2: 3.14432e-05 valid's l2: 6.76615e-05
+Early stopping, best iteration is:
+[1]     train's l2: 5.92169e-05 valid's l2: 6.11181e-05
+
+Making predictions...
+
+Sample predictions:
+datetime    instrument
+2025-03-03  ^NSEI         0.000888
+2025-03-04  ^NSEI         0.000888
+2025-03-05  ^NSEI         0.001004
+2025-03-06  ^NSEI         0.001004
+2025-03-07  ^NSEI         0.000797
+dtype: float64
+[16988:MainThread](2025-04-21 15:48:31,558) INFO - qlib.timer - [log.py:127] - Time cost: 0.863s | waiting `async_log` Done

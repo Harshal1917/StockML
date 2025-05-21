@@ -1,0 +1,77 @@
+
+(qlib_env) E:\Finance Internship\TASK_5>python workflow_by_code.py
+[21832:MainThread](2025-04-10 16:15:45,480) INFO - qlib.Initialization - [config.py:420] - default_conf: client.
+[21832:MainThread](2025-04-10 16:15:45,518) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[21832:MainThread](2025-04-10 16:15:45,528) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': WindowsPath('C:/Users/ASUS/.qlib/qlib_data/us_data')}
+[21832:MainThread](2025-04-10 16:18:12,317) INFO - qlib.timer - [log.py:127] - Time cost: 110.861s | Loading data Done
+[21832:MainThread](2025-04-10 16:18:14,840) INFO - qlib.timer - [log.py:127] - Time cost: 1.061s | DropnaLabel Done
+[21832:MainThread](2025-04-10 16:18:18,876) INFO - qlib.timer - [log.py:127] - Time cost: 4.026s | CSZScoreNorm Done
+[21832:MainThread](2025-04-10 16:18:18,949) INFO - qlib.timer - [log.py:127] - Time cost: 6.633s | fit & process data Done
+[21832:MainThread](2025-04-10 16:18:18,949) INFO - qlib.timer - [log.py:127] - Time cost: 117.504s | Init data Done
+                           KMID      KLEN     KMID2       KUP      KUP2      KLOW     KLOW2  ...   VSUMN60    VSUMD5   VSUMD10   VSUMD20   VSUMD30   VSUMD60    LABEL0
+datetime   instrument                                                                        ...
+2010-01-04 A          -0.002867  0.015929 -0.179998  0.007646  0.480001  0.005416  0.340001  ...  0.488124  0.437941  0.094805 -0.061465 -0.004077  0.023752 -0.003553
+           AA          0.010929  0.029751  0.367344  0.014572  0.489798  0.004250  0.142858  ...  0.520864  0.467327  0.049177 -0.026669  0.013906 -0.041728  0.052077
+           AAPL        0.002717  0.009933  0.273582  0.002296  0.231136  0.004920  0.495282  ...  0.498086 -0.012405  0.085838  0.020077  0.034140  0.003828 -0.015906
+           ABC         0.012933  0.020921  0.618180  0.002282  0.109092  0.005706  0.272728  ...  0.507518  0.866620 -0.200412 -0.005680 -0.012020 -0.015036 -0.009456
+           ABT         0.004982  0.011810  0.421867  0.001845  0.156256  0.004983  0.421877  ...  0.503522  0.557449 -0.011419 -0.005715  0.007228 -0.007044  0.005553
+
+[5 rows x 159 columns]
+[21832:MainThread](2025-04-10 16:18:24,198) INFO - qlib.workflow - [exp.py:258] - Experiment 968739968870458920 starts running ...
+[21832:MainThread](2025-04-10 16:18:25,963) INFO - qlib.workflow - [recorder.py:345] - Recorder bbef59ba457a4e16afecef676e27adb8 starts running under Experiment 968739968870458920 ...
+Training until validation scores don't improve for 50 rounds
+[20]    train's l2: 0.966858    valid's l2: 0.998516
+[40]    train's l2: 0.948953    valid's l2: 0.999245
+Early stopping, best iteration is:
+[3]     train's l2: 0.991371    valid's l2: 0.997931
+[21832:MainThread](2025-04-10 16:18:54,980) INFO - qlib.workflow - [record_temp.py:198] - Signal record 'pred.pkl' has been saved as the artifact of the Experiment 968739968870458920
+'The following are prediction results of the LGBModel model.'
+                          score
+datetime   instrument
+2019-01-02 A           0.000328
+           AAL        -0.000983
+           AAP         0.000328
+           AAPL       -0.008334
+           ABBV       -0.000983
+{'IC': 0.0020041393732202115,
+ 'ICIR': 0.022629847656590884,
+ 'Rank IC': 0.007253479189228819,
+ 'Rank ICIR': 0.05054252153035249}
+[21832:MainThread](2025-04-10 16:18:56,777) INFO - qlib.backtest caller - [__init__.py:93] - Create new exchange
+[21832:MainThread](2025-04-10 16:21:54,921) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[21832:MainThread](2025-04-10 16:21:54,928) WARNING - qlib.online operator - [exchange.py:219] - $close field data contains nan.
+[21832:MainThread](2025-04-10 16:22:26,832) WARNING - qlib.data - [data.py:665] - load calendar error: freq=day, future=True; return current calendar!
+[21832:MainThread](2025-04-10 16:22:26,834) WARNING - qlib.data - [data.py:668] - You can get future calendar by referring to the following document: https://github.com/microsoft/qlib/blob/main/scripts/data_collector/contrib/README.md
+[21832:MainThread](2025-04-10 16:22:26,864) WARNING - qlib.BaseExecutor - [executor.py:121] - `common_infra` is not set for <qlib.backtest.executor.SimulatorExecutor object at 0x0000013C6B8FB730>
+backtest loop:   0%|                                                                                                                                                                   | 0/252 [00:00<?, ?it/s]E:\Finance Internship\qlib_env\lib\site-packages\qlib\utils\index_data.py:492: RuntimeWarning: Mean of empty slice
+  return np.nanmean(self.data)
+backtest loop: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 252/252 [00:06<00:00, 40.14it/s]
+[21832:MainThread](2025-04-10 16:22:33,430) INFO - qlib.workflow - [record_temp.py:515] - Portfolio analysis record 'port_analysis_1day.pkl' has been saved as the artifact of the Experiment 968739968870458920
+'The following are analysis results of benchmark return(1day).'
+                       risk
+mean               0.001110
+std                0.007881
+annualized_return  0.264156
+information_ratio  2.172614
+max_drawdown      -0.067556
+'The following are analysis results of the excess return without cost(1day).'
+                       risk
+mean               0.000060
+std                0.004232
+annualized_return  0.014198
+information_ratio  0.217463
+max_drawdown      -0.080582
+'The following are analysis results of the excess return with cost(1day).'
+                       risk
+mean              -0.000129
+std                0.004226
+annualized_return -0.030661
+information_ratio -0.470237
+max_drawdown      -0.100928
+[21832:MainThread](2025-04-10 16:22:33,465) INFO - qlib.workflow - [record_temp.py:540] - Indicator analysis record 'indicator_analysis_1day.pkl' has been saved as the artifact of the Experiment 968739968870458920
+'The following are analysis results of indicators(1day).'
+     value
+ffr    1.0
+pa     0.0
+pos    0.0
+[21832:MainThread](2025-04-10 16:22:33,982) INFO - qlib.timer - [log.py:127] - Time cost: 0.000s | waiting `async_log` Done

@@ -1,0 +1,184 @@
+# Qlib Models Overview
+
+
+1. IC (Information Coefficient):
+- IC measures the correlation between the model's predictions and actual returns
+- It indicates how well the model's predictions align with real market movements
+- Range is from -1 to 1, where:
+  - 1 indicates perfect positive correlation
+  - -1 indicates perfect negative correlation
+  - 0 indicates no correlation
+2. IR (Information Ratio):
+- IR measures the risk-adjusted excess returns
+- Calculated as: IR = (Portfolio Return - Benchmark Return) / Tracking Error
+- Higher IR indicates better risk-adjusted performance
+- Shows how consistently the model generates excess returns
+3. AR (Annualized Return):
+- The return of the strategy converted to an annual basis
+- Represents the yearly growth rate of the investment
+- Helps compare performance across different time periods
+- Calculated by scaling up the returns to yearly equivalent
+4. ICIR (Information Coefficient Information Ratio):
+- ICIR combines IC and IR concepts
+- Measures the consistency of the IC over time
+- Calculated as: ICIR = Mean(IC) / Std(IC)
+- Higher ICIR indicates more stable prediction ability
+
+
+Annualized Return (AR): The return of an investment over a one-year period
+Information Ratio (IR): Risk-adjusted return (The ratio of the return of an investment over the return of a benchmark)
+Information Coefficient (IC): The correlation between the predicted and actual returns
+Information Coefficient Information Ratio (ICIR): The ratio of the Information Coefficient to the Standard Deviation of the Information Coefficient
+
+## 1. Available Model Categories
+
+### 1.1 Traditional Machine Learning Models
+- LightGBM
+  - Type: Gradient boosting framework
+  - Best for: Tabular data, fast training
+  - Performance on Alpha158: AR: 0.0901, IR: 1.0164
+
+- XGBoost
+  - Type: Gradient boosting framework
+  - Performance on Alpha158: AR: 0.0780, IR: 0.9070
+
+- CatBoost
+  - Type: Gradient boosting for categorical features
+  - Performance on Alpha158: AR: 0.0765, IR: 0.8032
+
+- Linear
+  - Type: Linear regression model
+  - Performance on Alpha158: AR: 0.0692, IR: 0.9209
+
+- DoubleEnsemble
+  - Type: Ensemble model
+  - Best Performance on Alpha158: AR: 0.1158, IR: 1.3432
+  - Base model: LGBM
+
+### 1.2 Deep Learning Models
+
+#### Neural Networks
+- MLP (Multi-layer Perceptron)
+  - Type: Basic neural network
+  - Performance on Alpha158: AR: 0.0895, IR: 1.1408
+
+- TabNet
+  - Type: Deep learning for tabular data
+  - Performance on Alpha158: AR: 0.0227, IR: 0.3676
+
+#### Time Series Models
+- LSTM (Long Short-Term Memory)
+  - Use case: Time series prediction
+  - Performance on Alpha158: AR: 0.0381, IR: 0.5561
+
+- GRU (Gated Recurrent Unit)
+  - Use case: Time series prediction
+  - Performance on Alpha158: AR: 0.0344, IR: 0.5160
+
+- ALSTM (Attention LSTM)
+  - Type: LSTM with attention mechanism
+  - Performance on Alpha158: AR: 0.0470, IR: 0.6992
+
+- TCN (Temporal Convolutional Network)
+  - Type: Convolutional network for sequences
+  - Performance on Alpha158: AR: 0.0262, IR: 0.4133
+
+#### Transformer-based Models
+- Transformer
+  - Type: Original transformer architecture
+  - Performance on Alpha158: AR: 0.0273, IR: 0.3970
+
+- Localformer
+  - Type: Local attention transformer
+  - Performance on Alpha158: AR: 0.0438, IR: 0.6600
+
+- TRA (Temporal Routing Adaptor)
+  - Performance on Alpha158: AR: 0.0718, IR: 1.0835
+
+#### Advanced Models
+- HIST (Historical Information for Stock Trend)
+  - Best Performance on Alpha360: AR: 0.0987, IR: 1.3726
+
+- IGMTF (Information Geometry Multi-Task Framework)
+  - Performance on Alpha360: AR: 0.0946, IR: 1.3509
+
+- SFM (State Frequency Memory)
+  - Performance on Alpha158: AR: 0.0465, IR: 0.5672
+
+### 1.3 Graph Models
+- GATs (Graph Attention Networks)
+  - Type: Graph neural network
+  - Performance on Alpha158: AR: 0.0497, IR: 0.7338
+
+## 2. Model Performance Metrics
+
+Performance metrics include:
+- AR: Annualized Return
+- IR: Information Ratio
+- IC: Information Coefficient
+- ICIR: Information Coefficient Information Ratio
+- Max Drawdown: Maximum observed loss
+
+## 3. Model Implementation Location
+
+Models can be found in:
+```
+qlib/examples/benchmarks/[MODEL_NAME]/
+```
+
+Example locations:
+- LightGBM: qlib/examples/benchmarks/LightGBM/
+- LSTM: qlib/examples/benchmarks/LSTM/
+- Transformer: qlib/examples/benchmarks/Transformer/
+
+## 4. Dataset Information
+
+Models are typically tested on two datasets:
+1. Alpha158
+   - Tabular dataset
+   - 158 technical indicators
+   - Less spatial relationships between features
+   - Carefully designed features
+
+2. Alpha360
+   - Raw price and volume data
+   - Strong temporal relationships
+   - Minimal feature engineering
+
+## 5. Using Models
+
+Basic steps to use a model:
+1. Initialize Qlib
+2. Prepare data
+3. Configure model parameters
+4. Train model
+5. Make predictions
+6. Evaluate results
+
+Example configuration for LightGBM:
+```python
+model_config = {
+    "class": "LGBModel",
+    "module_path": "qlib.contrib.model.gbdt",
+    "kwargs": {
+        "loss": "mse",
+        "learning_rate": 0.01,
+        "num_leaves": 31,
+        "num_boost_round": 100,
+        "max_depth": 5,
+        "feature_fraction": 0.8,
+        "bagging_fraction": 0.8,
+        "bagging_freq": 5,
+        "verbose": 10
+    }
+}
+```
+
+## 6. Model Selection Guidelines
+
+- For tabular data: LightGBM, XGBoost, or CatBoost
+- For time series: LSTM, GRU, or TCN
+- For complex temporal patterns: Transformer-based models
+- For stock relationships: Graph models (GATs)
+- For best overall performance: DoubleEnsemble or HIST
+

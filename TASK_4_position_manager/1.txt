@@ -1,0 +1,5 @@
+Settled Trades:
+SettledTrade(entry_order_id=ORDER-1, exit_order_id=ORDER-3, entry_execute_timestamp=2025-04-18 16:46:26.177504, exit_execute_timestamp=2025-04-18 16:46:26.187255, qty=200, entry_price=None, exit_price=None, profit_loss=None)
+SettledTrade(entry_order_id=ORDER-1, exit_order_id=ORDER-4, entry_execute_timestamp=2025-04-18 16:46:26.187255, exit_execute_timestamp=2025-04-18 16:46:26.187255, qty=200, entry_price=None, exit_price=None, profit_loss=None)
+SettledTrade(entry_order_id=ORDER-1, exit_order_id=ORDER-4, entry_execute_timestamp=2025-04-18 16:46:26.187255, exit_execute_timestamp=2025-04-18 16:46:26.187255, qty=200, entry_price=None, exit_price=None, profit_loss=None)
+SettledTrade(entry_order_id=ORDER-1, exit_order_id=ORDER-5, entry_execute_timestamp=2025-04-18 16:46:26.187255, exit_execute_timestamp=2025-04-18 16:46:26.187255, qty=100, entry_price=None, exit_price=None, profit_loss=None)

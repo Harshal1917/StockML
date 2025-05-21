@@ -1,0 +1,15 @@
+artifact_uri: file:E:\Finance Internship\TASK_5\mlruns/317896247961518826/44f5681da85e4eeea34b1503f11c0ddd/artifacts
+end_time: 1743679950538
+entry_point_name: ''
+experiment_id: '317896247961518826'
+lifecycle_stage: active
+run_id: 44f5681da85e4eeea34b1503f11c0ddd
+run_name: mlflow_recorder
+run_uuid: 44f5681da85e4eeea34b1503f11c0ddd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1743679947581
+status: 3
+tags: []
+user_id: ASUS

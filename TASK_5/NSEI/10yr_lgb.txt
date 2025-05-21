@@ -1,0 +1,829 @@
+
+
+
+
+
+
+
+
+
+#############################################################################################################################################################################################################################################
+
+
+
+
+
+
+
+
+
+
+(qlib_env) PS E:\Finance Internship\TASK_5\^NSEI> python .\model_raw.py
+[22568:MainThread](2025-04-22 16:40:20,878) INFO - qlib.Initialization - [config.py:420] - default_conf: client.
+[22568:MainThread](2025-04-22 16:40:20,884) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[22568:MainThread](2025-04-22 16:40:20,884) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': WindowsPath('C:/Users/ASUS/.qlib/qlib_data/NSEI_raw_10yrs')}
+
+Available instruments: {'market': 'all', 'filter_pipe': []}
+[22568:MainThread](2025-04-22 16:40:24,925) INFO - qlib.timer - [log.py:127] - Time cost: 0.221s | Loading data Done
+[22568:MainThread](2025-04-22 16:40:24,925) INFO - qlib.timer - [log.py:127] - Time cost: 0.000s | FilterCol Done
+E:\Finance Internship\qlib_env\lib\site-packages\qlib\data\dataset\processor.py:301: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df[self.cols] = X
+[22568:MainThread](2025-04-22 16:40:24,945) INFO - qlib.timer - [log.py:127] - Time cost: 0.021s | RobustZScoreNorm Done        
+[22568:MainThread](2025-04-22 16:40:24,945) INFO - qlib.timer - [log.py:127] - Time cost: 0.000s | FilterCol Done
+[22568:MainThread](2025-04-22 16:40:24,960) INFO - qlib.timer - [log.py:127] - Time cost: 0.015s | RobustZScoreNorm Done
+[22568:MainThread](2025-04-22 16:40:24,961) INFO - qlib.timer - [log.py:127] - Time cost: 0.036s | fit & process data Done      
+[22568:MainThread](2025-04-22 16:40:24,964) INFO - qlib.timer - [log.py:127] - Time cost: 0.260s | Init data Done
+
+Dataset information:
+Training data shapes:
+('feature', 'KMID') shape: (1895,)
+('feature', 'KUP') shape: (1895,)
+('feature', 'KLOW') shape: (1895,)
+('feature', 'MA5') shape: (1895,)
+('feature', 'MA10') shape: (1895,)
+('feature', 'MA20') shape: (1895,)
+('feature', 'STD5') shape: (1895,)
+('feature', 'STD10') shape: (1895,)
+('feature', 'STD20') shape: (1895,)
+('feature', 'RESI5') shape: (1895,)
+('feature', 'RESI10') shape: (1895,)
+('feature', 'RESI20') shape: (1895,)
+('label', 'LABEL0') shape: (1895,)
+
+Feature Correlations:
+Highly correlated features:
+
+Do you want to proceed with training? (y/n): y
+[22568:MainThread](2025-04-22 16:40:26,802) INFO - qlib.workflow - [exp.py:258] - Experiment 208382467731689026 starts running ...
+[22568:MainThread](2025-04-22 16:40:27,094) INFO - qlib.workflow - [recorder.py:345] - Recorder 89e504ee4dc44262845777cf4dacc8dd starts running under Experiment 208382467731689026 ...
+
+Training model...
+Training until validation scores don't improve for 50 rounds
+[20]    train's l2: 0.000120849 valid's l2: 3.79168e-05
+[40]    train's l2: 0.000118187 valid's l2: 3.78838e-05
+[60]    train's l2: 0.000116032 valid's l2: 3.79119e-05
+[80]    train's l2: 0.000114108 valid's l2: 3.78144e-05
+[100]   train's l2: 0.000112335 valid's l2: 3.77513e-05
+[120]   train's l2: 0.000110597 valid's l2: 3.7629e-05
+[140]   train's l2: 0.000109027 valid's l2: 3.75872e-05
+[160]   train's l2: 0.000107511 valid's l2: 3.75257e-05
+[180]   train's l2: 0.00010596  valid's l2: 3.75853e-05
+[200]   train's l2: 0.000104407 valid's l2: 3.76007e-05
+Early stopping, best iteration is:
+[160]   train's l2: 0.000107511 valid's l2: 3.75257e-05
+
+Training Metrics:
+train: OrderedDict([('l2', [0.00012326502227101845, 0.00012312873822759753, 0.00012298029568447017, 0.00012285781987981314, 0.00012274861021563542, 0.0001226582245264196, 0.00012250010066161817, 0.00012238125918417477, 0.00012223901104919761, 0.0001220821582701527, 0.00012195372648281447, 0.00012181022806147838, 0.00012167024236348012, 0.0001215487270722535, 0.00012142118644217018, 0.00012129125953252447, 0.00012119799696530514, 0.00012110435114693984, 0.00012095442796855057, 0.00012084938621093901, 0.0001207199353117639, 0.00012059891022645812, 0.00012044373891650392, 0.00012033458961955476, 0.00012018706702900394, 0.00012003857197529874, 0.00011988617028574083, 0.00011974641979328576, 0.00011959630739803286, 0.00011944856947226226, 0.00011923465640646527, 0.00011911399434117572, 0.00011899236549595307, 0.00011877693402479794, 0.00011863540942039832, 0.00011854057529451148, 0.00011844208467822163, 0.00011836014042055875, 0.0001182716986966126, 0.00011818725789894372, 0.000118085878050453, 0.00011790621035226401, 0.00011781530345141316, 0.00011772466526935995, 0.00011759736022174324, 0.00011748264262649692, 0.00011738594761345152, 0.00011732028178987307, 0.0001172415343010896, 0.00011714719916310109, 0.00011708242516394935, 0.0001170125149574631, 0.00011688435999742932, 0.00011681182107174064, 0.00011671152944299833, 0.0001165325342067515, 0.00011641243141767265, 0.00011628315140367875, 0.00011615479784817419, 0.00011603168359431596, 0.00011592440884774265, 0.00011581088465049189, 0.00011570477875396614, 0.00011559398435974697, 0.0001154893148005638, 0.00011542257439800652, 0.0001153571155859182, 0.00011529740844440783, 0.00011523095043241863, 0.00011512969511786255, 0.00011504598442027688, 0.00011494245742546953, 0.00011481910247320275, 0.0001147059704851725, 0.00011459499476268201, 0.00011450609201352045, 0.00011441070984982715, 0.00011431315136115537, 0.00011421478923618285, 0.0001141077279685957, 0.00011403273505050344, 0.00011395392916531345, 0.00011388062841365572, 0.00011382039321659392, 0.00011372883121841351, 0.00011357907574344254, 0.00011341288775148028, 0.00011332401258495973, 0.00011318555108051405, 0.00011310550366573253, 0.00011302462545186433, 0.00011294682399998647, 0.00011286281728394793, 0.00011279154136299558, 0.00011268865994725589, 0.00011260919241431993, 0.00011250948141623553, 0.00011243702835946545, 0.00011238358984500735, 0.00011233517595232887, 0.00011224003478410315, 0.0001121649977507579, 0.00011207200921950821, 0.00011197402581863451, 0.00011185734467065611, 0.00011176985278831663, 0.0001116804350504419, 0.00011159282731737398, 0.00011154303849377486, 0.00011148442014973943, 0.0001114329990243834, 0.00011134732564083579, 0.00011129313577298965, 0.00011123802479563056, 0.00011114928685700889, 0.0001110265837696873, 0.0001109037309974306, 0.00011079485798343298, 0.0001107253955582742, 0.00011059682865372925, 0.00011051903849557771, 0.00011045364642965405, 0.00011037689881725706, 0.00011031595367212643, 0.00011021151884312038, 0.00011012854509864477, 0.00011004992530467333, 0.00010997043676461192, 0.00010989049193082319, 0.0001098234510408028, 0.00010974181681654408, 0.0001096546377588794, 0.00010957791612691071, 0.0001095230794005195, 0.00010943755314275221, 0.00010935524745822179, 0.00010928576209511074, 0.00010920349397973378, 0.00010912804981312678, 0.00010902683593452406, 0.00010897089875229258, 0.0001089180755308681, 0.00010885626488835848, 0.00010878788324681912, 0.00010872976675001155, 0.00010863711570626793, 0.0001085503562079839, 0.00010846154444862478, 0.00010838704237802861, 0.00010829688266311611, 0.00010819568969887072, 0.0001081037268652551, 0.00010800848838354632, 0.00010790909666339167, 0.00010782728245620054, 0.00010775879482943344, 0.00010770239241626522, 0.00010763813461102003, 0.00010758128531166771, 0.00010751119913919414, 0.00010743308598158715, 0.00010734514901973493, 0.0001072667429403697, 0.00010719171071497748, 0.00010715586575907996, 0.00010709157791267118, 0.00010700978057022272, 0.00010692515211713059, 0.00010683491164537916, 0.00010678118965816802, 0.0001067051187802463, 0.00010663710386157174, 0.00010654271335300232, 0.00010647701444682343, 0.00010638078727397542, 0.00010630545505782467, 0.00010622928192534895, 0.00010613874767247384, 0.00010605964857224354, 0.00010596031776582083, 0.00010588589420228395, 0.00010580599666690774, 0.0001057382200653372, 0.0001056521254299382, 0.00010553855184662175, 0.00010547238898041909, 0.00010540918761378876, 0.00010534500332453923, 0.00010527360222475321, 0.00010520592176533144, 0.00010513335971281957, 0.0001050551262443806, 0.00010500231762895495, 0.00010494712667934466, 0.00010487718757140905, 0.00010477621304782027, 0.00010468078041320943, 0.00010459008770408596, 0.00010449402200883774, 0.00010440651519988609, 0.00010430182586818125, 0.00010421957918720496, 0.00010414148803531452, 0.0001040620525082936, 0.00010398813877377049, 0.00010392563630713263, 0.00010385197332385116, 0.00010377715815387627, 0.00010368171691423665, 0.00010357929900765824])])
+valid: OrderedDict([('l2', [3.811923919777932e-05, 3.811159267926209e-05, 3.809904027670461e-05, 3.808213842123347e-05, 3.8081013199957996e-05, 3.804604499706654e-05, 3.803953997671101e-05, 3.7999527516910165e-05, 3.797326167754675e-05, 3.797202341506981e-05, 3.797730430565791e-05, 3.795067260417478e-05, 3.7955340373189484e-05, 3.7946601224367206e-05, 3.793608439302084e-05, 3.794066049852741e-05, 3.792149483770288e-05, 3.790780231343519e-05, 3.7922893196459355e-05, 3.791683032409027e-05, 3.789821012614135e-05, 3.786913194499584e-05, 3.7874815417172996e-05, 3.7873561009626525e-05, 3.788932561903468e-05, 3.78861870269216e-05, 3.787475248291561e-05, 3.7865875459468046e-05, 3.7843806614181626e-05, 3.786123696136746e-05, 3.786873488401197e-05, 3.785663921005456e-05, 3.78460844785327e-05, 3.787065359551948e-05, 3.7891643283943746e-05, 3.7890687660102504e-05, 3.788644032514778e-05, 3.788289353953224e-05, 3.788025814731048e-05, 3.788375441681876e-05, 3.7876662877161305e-05, 3.7873056404469326e-05, 3.7868766167796366e-05, 3.786086476560708e-05, 3.786422652348334e-05, 3.78588305326452e-05, 3.7855590150960566e-05, 3.786107137572068e-05, 3.785643132320558e-05, 3.785375742674528e-05, 3.786074504935524e-05, 3.78615772464422e-05, 3.7852934045733956e-05, 3.784611444983674e-05, 3.784826175757548e-05, 3.784732098845232e-05, 3.787405525022605e-05, 3.789405263954824e-05, 3.7905511469234116e-05, 3.791191678437021e-05, 3.793449227452286e-05, 3.795825195393377e-05, 3.796300642224297e-05, 3.7948652384649344e-05, 3.7956022249185235e-05, 3.794443644625423e-05, 3.792909057979009e-05, 3.793169666510276e-05, 3.791505483540656e-05, 3.793968706808434e-05, 3.7923382975421086e-05, 3.7914722280586364e-05, 3.789250675315806e-05, 3.788967717222792e-05, 3.788717024834218e-05, 3.786855633816644e-05, 3.786450900663497e-05, 3.783943919721005e-05, 3.7838937927043573e-05, 3.781443264356894e-05, 3.780254823439053e-05, 3.780386751905387e-05, 3.78076212364615e-05, 3.779389933852051e-05, 3.772635e-05, 3.7793945047735484e-05, 3.779015810710771e-05, 3.779481062967533e-05, 3.778822964965236e-05, 3.777527142608635e-05, 3.777293961826258e-05, 3.777354736798896e-05, 3.7786965636748074e-05, 3.778007876042953e-05, 3.779748301119474e-05, 3.7788498527401684e-05, 3.778283971028554e-05, 3.776809230900064e-05, 3.775223327512548e-05, 3.7751268961810795e-05, 3.774870715432924e-05, 3.7742084067251606e-05, 3.775771393337197e-05, 3.774230034534472e-05, 3.775044532488433e-05, 3.7744888007486456e-05, 3.772637594719642e-05, 3.7715872457083616e-05, 3.7719648778791326e-05, 3.772312759982096e-05, 3.772344135043372e-05, 3.769367316876096e-05, 3.7686078522718734e-05, 3.768468462766613e-05, 3.76786693319838e-05, 3.76755814996849e-05, 3.7678312307077566e-05, 3.7645042107545474e-05, 3.7637708151612625e-05, 3.762899521477646e-05, 3.7613210473968685e-05, 3.760645415848893e-05, 3.7592410233828314e-05, 3.758347421946591e-05, 3.757906448166705e-05, 3.758243966420933e-05, 3.757609971437725e-05, 3.7580934254465886e-05, 3.7584863440061045e-05, 3.759135819142186e-05, 3.7588497454414914e-05, 3.758727776929226e-05, 3.7589576290860385e-05, 3.757927167367862e-05, 3.758453384547901e-05, 3.757716573600607e-05, 3.756697550843157e-05, 3.758513828843591e-05, 3.757781209056091e-05, 3.758723408257203e-05, 3.758311648720354e-05, 3.758751709078965e-05, 3.758627399199016e-05, 3.757719515525093e-05, 3.757551588366846e-05, 3.756838776279001e-05, 3.755902862048749e-05, 3.75506796111749e-05, 3.754447604672613e-05, 3.755160971792109e-05, 3.754865374928177e-05, 3.7547087688062904e-05, 3.7561550309112456e-05, 3.755149940052394e-05, 3.7572912783402416e-05, 3.7569657739706225e-05, 3.754285114799452e-05, 3.7539229296029905e-05, 3.753712694515123e-05, 3.752570781962162e-05, 3.755077289248807e-05, 3.7572447400186965e-05, 3.758253845123867e-05, 3.758968989381939e-05, 3.759470713958585e-05, 3.75822932730408e-05, 3.758269900079598e-05, 3.7597962382820624e-05, 3.759328490951695e-05, 3.759076862221992e-05, 3.757864881312553e-05, 3.75723169285e-05, 3.756953128122014e-05, 3.7556803560347776e-05, 3.7560301523684235e-05, 3.756599115707035e-05, 3.7556214622546946e-05, 3.756055754003529e-05, 3.757107597805085e-05, 3.7585270912509995e-05, 3.758210123529058e-05, 3.7585180066570094e-05, 3.759688568403976e-05, 3.758544489280874e-05, 3.7572461786519036e-05, 3.756347803736139e-05, 3.755398555916807e-05, 3.753974917231628e-05, 3.753449518359724e-05, 3.7527271743386204e-05, 3.754388624335757e-05, 3.7553357381327715e-05, 3.757348577114315e-05, 3.757617861647877e-05, 3.760003681830557e-05, 3.7589142852711426e-05, 3.761055077126546e-05, 3.7604375072098415e-05, 3.7607104558125424e-05, 3.7600724071908835e-05, 3.759456984209779e-05, 3.758341910630644e-05, 3.757870445410292e-05, 3.75685048755207e-05, 3.757201367548346e-05, 3.7566016222121085e-05, 3.757358472504911e-05, 3.757758724268849e-05, 3.7570925718695114e-05, 3.757814369189099e-05])])
+
+//L2 = {P-A}^2
+
+Making predictions...
+
+#TODO: WHAT IT IS PREDICTING?
+Sample predictions:
+datetime    instrument
+2024-01-01  ^NSEI_RAW_10YRS   -0.001042
+2024-01-02  ^NSEI_RAW_10YRS    0.001228
+2024-01-03  ^NSEI_RAW_10YRS    0.001380
+2024-01-04  ^NSEI_RAW_10YRS    0.001313
+2024-01-05  ^NSEI_RAW_10YRS    0.000521
+dtype: float64
+[22568:MainThread](2025-04-22 16:40:29,818) INFO - qlib.timer - [log.py:127] - Time cost: 1.448s | waiting `async_log` Done
+
+
+
+
+
+
+
+
+
+#############################################################################################################################################################################################################################################
+
+
+
+
+
+
+
+
+
+
+(qlib_env) PS E:\Finance Internship\TASK_5\^NSEI> python .\model_raw.py
+[3884:MainThread](2025-04-22 15:59:26,799) INFO - qlib.Initialization - [config.py:420] - default_conf: client.
+[3884:MainThread](2025-04-22 15:59:26,799) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[3884:MainThread](2025-04-22 15:59:26,799) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': WindowsPath('C:/Users/ASUS/.qlib/qlib_data/NSEI_raw_10yrs')}      
+
+Available instruments: {'market': 'all', 'filter_pipe': []}
+[3884:MainThread](2025-04-22 15:59:32,567) INFO - qlib.timer - [log.py:127] - Time cost: 0.298s | Loading data Done
+[3884:MainThread](2025-04-22 15:59:32,576) INFO - qlib.timer - [log.py:127] - Time cost: 0.009s | FilterCol Done
+E:\Finance Internship\qlib_env\lib\site-packages\qlib\data\dataset\processor.py:301: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df[self.cols] = X
+[3884:MainThread](2025-04-22 15:59:32,604) INFO - qlib.timer - [log.py:127] - Time cost: 0.028s | RobustZScoreNorm Done
+[3884:MainThread](2025-04-22 15:59:32,608) INFO - qlib.timer - [log.py:127] - Time cost: 0.002s | FilterCol Done
+[3884:MainThread](2025-04-22 15:59:32,628) INFO - qlib.timer - [log.py:127] - Time cost: 0.018s | RobustZScoreNorm Done
+[3884:MainThread](2025-04-22 15:59:32,630) INFO - qlib.timer - [log.py:127] - Time cost: 0.061s | fit & process data Done
+[3884:MainThread](2025-04-22 15:59:32,631) INFO - qlib.timer - [log.py:127] - Time cost: 0.361s | Init data Done
+
+Dataset information:
+Training data shapes:
+('feature', 'KMID') shape: (2140,)
+('feature', 'KUP') shape: (2140,)
+('feature', 'KLOW') shape: (2140,)
+('feature', 'MA5') shape: (2140,)
+('feature', 'MA10') shape: (2140,)
+('feature', 'MA20') shape: (2140,)
+('feature', 'STD5') shape: (2140,)
+('feature', 'STD10') shape: (2140,)
+('feature', 'STD20') shape: (2140,)
+('feature', 'RESI5') shape: (2140,)
+('feature', 'RESI10') shape: (2140,)
+('feature', 'RESI20') shape: (2140,)
+('label', 'LABEL0') shape: (2140,)
+
+=== Data Quality Report ===
+
+Missing values in ('feature', 'KMID'):
+No missing values
+
+Missing values in ('feature', 'KUP'):
+No missing values
+
+Missing values in ('feature', 'KLOW'):
+No missing values
+
+Missing values in ('feature', 'MA5'):
+No missing values
+
+Missing values in ('feature', 'MA10'):
+No missing values
+
+Missing values in ('feature', 'MA20'):
+No missing values
+
+Missing values in ('feature', 'STD5'):
+[1]
+
+Missing values in ('feature', 'STD10'):
+[1]
+
+Missing values in ('feature', 'STD20'):
+[1]
+
+Missing values in ('feature', 'RESI5'):
+[1]
+
+Missing values in ('feature', 'RESI10'):
+[1]
+
+Missing values in ('feature', 'RESI20'):
+[1]
+
+Missing values in ('label', 'LABEL0'):
+No missing values
+
+Feature Statistics:
+               KMID          KUP         KLOW  ...        RESI5       RESI10       RESI20
+count  2.140000e+03  2140.000000  2140.000000  ...  2139.000000  2139.000000  2139.000000    
+mean  -3.939340e-02     0.327024     0.321425  ...     0.015086     0.006908    -0.011474    
+std    1.172075e+00     1.205098     1.150855  ...     1.144221     1.115651     1.121184    
+min   -3.000000e+00    -1.175060    -1.324914  ...    -3.000000    -3.000000    -3.000000    
+25%   -6.976455e-01    -0.565444    -0.558983  ...    -0.662814    -0.697288    -0.685687    
+50%   -4.656613e-09    -0.009095     0.025466  ...     0.003308     0.000000    -0.006584    
+75%    6.674274e-01     0.947468     0.933010  ...     0.709838     0.672972     0.673457    
+max    3.000000e+00     3.000000     3.000000  ...     3.000000     3.000000     3.000000    
+
+[8 rows x 12 columns]
+
+Feature Value Ranges:
+KMID: min=-3.000000, max=3.000000
+KUP: min=-1.175060, max=3.000000
+KLOW: min=-1.324914, max=3.000000
+MA5: min=-3.000000, max=3.000000
+MA10: min=-3.000000, max=3.000000
+MA20: min=-3.000000, max=3.000000
+STD5: min=-1.685786, max=3.000000
+STD10: min=-1.660076, max=3.000000
+STD20: min=-1.804265, max=3.000000
+RESI5: min=-3.000000, max=3.000000
+RESI10: min=-3.000000, max=3.000000
+RESI20: min=-3.000000, max=3.000000
+
+Label Distribution:
+            LABEL0
+count  2140.000000
+mean      0.000511
+std       0.010663
+min      -0.129805
+25%      -0.004415
+50%       0.000711
+75%       0.006160
+max       0.087632
+
+Do you want to proceed with training? (y/n): y
+[3884:MainThread](2025-04-22 16:00:02,081) INFO - qlib.workflow - [exp.py:258] - Experiment 208382467731689026 starts running ...
+[3884:MainThread](2025-04-22 16:00:02,441) INFO - qlib.workflow - [recorder.py:345] - Recorder 8ef5c91b0a0d43b587ed39c5bf18fee7 starts running under Experiment 208382467731689026 ...    
+
+Training model...
+Training until validation scores don't improve for 50 rounds
+[20]    train's l2: 0.000112746 valid's l2: 7.96914e-05
+[40]    train's l2: 0.000111994 valid's l2: 7.98418e-05
+Early stopping, best iteration is:
+[4]     train's l2: 0.000113426 valid's l2: 7.95149e-05
+
+Training Metrics:
+train: OrderedDict([('l2', [0.00011358655897989562, 0.00011353325668348184, 0.00011347929137827019, 0.00011342587983983733, 0.00011337518155309434, 0.00011334102223179777, 0.00011329400209732622, 0.00011325468994047066, 0.00011321918359554608, 0.00011318040210187287, 0.00011312077821730387, 0.0001130805948200593, 0.00011304238056285107, 0.00011300538917770849, 0.0001129674437053839, 0.00011293554788340152, 0.00011287195035202553, 0.00011284044181386704, 0.00011277754731745814, 0.0001127463092105106, 0.00011271529706011435, 0.00011268460317079264, 0.00011265452130916804, 0.00011262378459374713, 0.0001125933626397602, 0.00011255565182023542, 0.00011251667059116894, 0.00011247600411781655, 0.00011242633114019592, 0.00011237716601749046, 0.00011234286589959339, 0.00011229756609365464, 0.00011226786861072492, 0.00011223420187278057, 0.00011219108439491286, 0.00011214622924411368, 0.00011209802434234094, 0.00011206705870718272, 0.0001120240390302063, 0.00011199360949697769, 0.00011195350918085384, 0.00011191611244651581, 0.00011187715198921197, 0.0001118385907122263, 0.00011180056713858168, 0.00011177708813167088, 0.00011175387013182157, 0.00011173091040161342, 0.00011170787050413356, 0.00011168539522987995, 0.00011165467469573232, 0.00011162456622068507, 0.00011159296375429218, 0.00011156015259981062])])
+valid: OrderedDict([('l2', [7.952638201862838e-05, 7.952515381377813e-05, 7.951992446217369e-05, 7.95149282785695e-05, 7.953159021782536e-05, 7.953517218236922e-05, 7.954121377626228e-05, 7.955235573995988e-05, 7.956477951693697e-05, 7.957605132260731e-05, 7.957323223091533e-05, 7.957720721974681e-05, 7.9579206698594e-05, 7.959871518517274e-05, 7.960288293734317e-05, 7.962211763055992e-05, 7.963691005791886e-05, 7.965721016047752e-05, 7.967228201488603e-05, 7.969144854581779e-05, 7.969478410713392e-05, 7.969819105743572e-05, 7.969938548145357e-05, 7.971226413130961e-05, 7.972513860716061e-05, 7.97254126619733e-05, 7.9722981564529e-05, 7.972393007928462e-05, 7.973162818006177e-05, 7.973950399770712e-05, 7.974392131276234e-05, 7.97574919023871e-05, 7.977505124300413e-05, 7.977958361987423e-05, 7.978564027414147e-05, 7.979755962447119e-05, 7.981391913550042e-05, 7.982705384531249e-05, 7.982857432736957e-05, 7.984181108940962e-05, 7.985781331262556e-05, 7.987425934518166e-05, 7.989216033350026e-05, 7.991010784211681e-05, 7.99244374515591e-05, 7.994877807314911e-05, 7.997312048681215e-05, 7.999746345212028e-05, 8.001337025986854e-05, 8.003772599345985e-05, 8.005249683396202e-05, 8.006966320137371e-05, 8.008238555096032e-05, 8.008251720366131e-05])])
+
+Making predictions...
+
+Sample predictions:
+datetime    instrument
+2025-01-01  ^NSEI_RAW_10YRS    0.000508
+2025-01-02  ^NSEI_RAW_10YRS    0.000508
+2025-01-03  ^NSEI_RAW_10YRS    0.000508
+2025-01-06  ^NSEI_RAW_10YRS    0.000508
+2025-01-07  ^NSEI_RAW_10YRS    0.000508
+dtype: float64
+[3884:MainThread](2025-04-22 16:00:03,418) INFO - qlib.timer - [log.py:127] - Time cost: 0.384s | waiting `async_log` Done
+
+
+
+
+
+
+
+
+
+#############################################################################################################################################################################################################################################
+
+
+
+
+
+
+
+
+
+
+(qlib_env) PS E:\Finance Internship\TASK_5\^NSEI> python .\model_raw.py
+[6720:MainThread](2025-04-22 15:53:50,251) INFO - qlib.Initialization - [config.py:420] - default_conf: client.
+[6720:MainThread](2025-04-22 15:53:50,255) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[6720:MainThread](2025-04-22 15:53:50,255) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': WindowsPath('C:/Users/ASUS/.qlib/qlib_data/NSEI_raw_10yrs')}      
+
+Available instruments: {'market': 'all', 'filter_pipe': []}
+[6720:MainThread](2025-04-22 15:54:13,392) INFO - qlib.timer - [log.py:127] - Time cost: 0.418s | Loading data Done
+[6720:MainThread](2025-04-22 15:54:13,403) INFO - qlib.timer - [log.py:127] - Time cost: 0.007s | FilterCol Done
+E:\Finance Internship\qlib_env\lib\site-packages\qlib\data\dataset\processor.py:301: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df[self.cols] = X
+[6720:MainThread](2025-04-22 15:54:13,439) INFO - qlib.timer - [log.py:127] - Time cost: 0.035s | RobustZScoreNorm Done
+[6720:MainThread](2025-04-22 15:54:13,444) INFO - qlib.timer - [log.py:127] - Time cost: 0.002s | FilterCol Done
+[6720:MainThread](2025-04-22 15:54:13,471) INFO - qlib.timer - [log.py:127] - Time cost: 0.026s | RobustZScoreNorm Done
+[6720:MainThread](2025-04-22 15:54:13,473) INFO - qlib.timer - [log.py:127] - Time cost: 0.079s | fit & process data Done
+[6720:MainThread](2025-04-22 15:54:13,474) INFO - qlib.timer - [log.py:127] - Time cost: 0.500s | Init data Done
+
+Dataset information:
+Training data shapes:
+('feature', 'KMID') shape: (2140,)
+('feature', 'KUP') shape: (2140,)
+('feature', 'KLOW') shape: (2140,)
+('feature', 'MA5') shape: (2140,)
+('feature', 'MA10') shape: (2140,)
+('feature', 'MA20') shape: (2140,)
+('feature', 'STD5') shape: (2140,)
+('feature', 'STD10') shape: (2140,)
+('feature', 'STD20') shape: (2140,)
+('feature', 'RESI5') shape: (2140,)
+('feature', 'RESI10') shape: (2140,)
+('feature', 'RESI20') shape: (2140,)
+('label', 'LABEL0') shape: (2140,)
+
+=== Data Quality Report ===
+
+Missing values in ('feature', 'KMID'):
+No missing values
+
+Missing values in ('feature', 'KUP'):
+No missing values
+
+Missing values in ('feature', 'KLOW'):
+No missing values
+
+Missing values in ('feature', 'MA5'):
+No missing values
+
+Missing values in ('feature', 'MA10'):
+No missing values
+
+Missing values in ('feature', 'MA20'):
+No missing values
+
+Missing values in ('feature', 'STD5'):
+[1]
+
+Missing values in ('feature', 'STD10'):
+[1]
+
+Missing values in ('feature', 'STD20'):
+[1]
+
+Missing values in ('feature', 'RESI5'):
+[1]
+
+Missing values in ('feature', 'RESI10'):
+[1]
+
+Missing values in ('feature', 'RESI20'):
+[1]
+
+Missing values in ('label', 'LABEL0'):
+No missing values
+
+Feature Statistics:
+               KMID          KUP         KLOW  ...        RESI5       RESI10       RESI20
+count  2.140000e+03  2140.000000  2140.000000  ...  2139.000000  2139.000000  2139.000000    
+mean  -3.939340e-02     0.327024     0.321425  ...     0.015086     0.006908    -0.011474    
+std    1.172075e+00     1.205098     1.150855  ...     1.144221     1.115651     1.121184    
+min   -3.000000e+00    -1.175060    -1.324914  ...    -3.000000    -3.000000    -3.000000    
+25%   -6.976455e-01    -0.565444    -0.558983  ...    -0.662814    -0.697288    -0.685687    
+50%   -4.656613e-09    -0.009095     0.025466  ...     0.003308     0.000000    -0.006584    
+75%    6.674274e-01     0.947468     0.933010  ...     0.709838     0.672972     0.673457    
+max    3.000000e+00     3.000000     3.000000  ...     3.000000     3.000000     3.000000    
+
+[8 rows x 12 columns]
+
+Feature Value Ranges:
+KMID: min=-3.000000, max=3.000000
+KUP: min=-1.175060, max=3.000000
+KLOW: min=-1.324914, max=3.000000
+MA5: min=-3.000000, max=3.000000
+MA10: min=-3.000000, max=3.000000
+MA20: min=-3.000000, max=3.000000
+STD5: min=-1.685786, max=3.000000
+STD10: min=-1.660076, max=3.000000
+STD20: min=-1.804265, max=3.000000
+RESI5: min=-3.000000, max=3.000000
+RESI10: min=-3.000000, max=3.000000
+RESI20: min=-3.000000, max=3.000000
+
+Label Distribution:
+            LABEL0
+count  2140.000000
+mean      0.000511
+std       0.010663
+min      -0.129805
+25%      -0.004415
+50%       0.000711
+75%       0.006160
+max       0.087632
+
+Do you want to proceed with training? (y/n): y
+[6720:MainThread](2025-04-22 15:54:52,757) INFO - qlib.workflow - [exp.py:258] - Experiment 208382467731689026 starts running ...
+[6720:MainThread](2025-04-22 15:54:53,267) INFO - qlib.workflow - [recorder.py:345] - Recorder a0badd731a49487caef330f6ca1d032e starts running under Experiment 208382467731689026 ...    
+
+Training model...
+Training until validation scores don't improve for 300 rounds
+[20]    train's l2: 0.000113619 valid's l2: 7.95324e-05
+[40]    train's l2: 0.000113595 valid's l2: 7.9533e-05
+[60]    train's l2: 0.000113572 valid's l2: 7.95378e-05
+[80]    train's l2: 0.00011355  valid's l2: 7.95384e-05
+[100]   train's l2: 0.000113526 valid's l2: 7.95413e-05
+[120]   train's l2: 0.000113502 valid's l2: 7.95413e-05
+[140]   train's l2: 0.000113478 valid's l2: 7.95439e-05
+[160]   train's l2: 0.000113453 valid's l2: 7.95475e-05
+[180]   train's l2: 0.000113427 valid's l2: 7.95494e-05
+[200]   train's l2: 0.000113401 valid's l2: 7.95533e-05
+[220]   train's l2: 0.000113375 valid's l2: 7.95549e-05
+[240]   train's l2: 0.000113352 valid's l2: 7.95548e-05
+[260]   train's l2: 0.000113325 valid's l2: 7.95586e-05
+[280]   train's l2: 0.000113301 valid's l2: 7.95615e-05
+[300]   train's l2: 0.000113278 valid's l2: 7.95625e-05
+Early stopping, best iteration is:
+[7]     train's l2: 0.000113634 valid's l2: 7.95313e-05
+
+Making predictions...
+
+Sample predictions:
+datetime    instrument
+2025-01-01  ^NSEI_RAW_10YRS    0.000510
+2025-01-02  ^NSEI_RAW_10YRS    0.000510
+2025-01-03  ^NSEI_RAW_10YRS    0.000510
+2025-01-06  ^NSEI_RAW_10YRS    0.000511
+2025-01-07  ^NSEI_RAW_10YRS    0.000511
+dtype: float64
+[6720:MainThread](2025-04-22 15:54:56,474) INFO - qlib.timer - [log.py:127] - Time cost: 1.744s | waiting `async_log` Done
+
+
+
+
+
+
+
+
+
+
+
+
+
+#############################################################################################################################################################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+(qlib_env) PS E:\Finance Internship\TASK_5\^NSEI> python .\model_raw.py
+[4584:MainThread](2025-04-22 15:41:13,248) INFO - qlib.Initialization - [config.py:420] - default_conf: client.
+[4584:MainThread](2025-04-22 15:41:13,253) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[4584:MainThread](2025-04-22 15:41:13,253) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': WindowsPath('C:/Users/ASUS/.qlib/qlib_data/NSEI_raw_10yrs')}
+
+Available instruments: {'market': 'all', 'filter_pipe': []}
+[4584:MainThread](2025-04-22 15:41:17,718) INFO - qlib.timer - [log.py:127] - Time cost: 0.269s | Loading data Done
+[4584:MainThread](2025-04-22 15:41:17,723) INFO - qlib.timer - [log.py:127] - Time cost: 0.005s | FilterCol Done
+E:\Finance Internship\qlib_env\lib\site-packages\qlib\data\dataset\processor.py:301: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df[self.cols] = X
+[4584:MainThread](2025-04-22 15:41:17,739) INFO - qlib.timer - [log.py:127] - Time cost: 0.014s | RobustZScoreNorm Done
+[4584:MainThread](2025-04-22 15:41:17,742) INFO - qlib.timer - [log.py:127] - Time cost: 0.001s | FilterCol Done
+[4584:MainThread](2025-04-22 15:41:17,757) INFO - qlib.timer - [log.py:127] - Time cost: 0.014s | RobustZScoreNorm Done
+[4584:MainThread](2025-04-22 15:41:17,758) INFO - qlib.timer - [log.py:127] - Time cost: 0.040s | fit & process data Done
+[4584:MainThread](2025-04-22 15:41:17,759) INFO - qlib.timer - [log.py:127] - Time cost: 0.309s | Init data Done
+
+Dataset information:
+Training data shapes:
+('feature', 'KMID') shape: (2140,)
+('feature', 'KUP') shape: (2140,)
+('feature', 'KLOW') shape: (2140,)
+('feature', 'MA10') shape: (2140,)
+('feature', 'MA20') shape: (2140,)
+('feature', 'STD5') shape: (2140,)
+('feature', 'STD10') shape: (2140,)
+('feature', 'STD20') shape: (2140,)
+('feature', 'RESI5') shape: (2140,)
+[4584:MainThread](2025-04-22 15:41:17,795) INFO - qlib.workflow - [exp.py:258] - Experiment 208382467731689026 starts running ...
+[4584:MainThread](2025-04-22 15:41:18,142) INFO - qlib.workflow - [recorder.py:345] - Recorder ae8c39abd2054e2795c2102ecd6bef0b starts running under Experiment 208382467731689026 ...
+
+Training model...
+Training until validation scores don't improve for 300 rounds
+[20]    train's l2: 0.000113619 valid's l2: 7.95324e-05
+[40]    train's l2: 0.000113595 valid's l2: 7.9533e-05
+[60]    train's l2: 0.000113572 valid's l2: 7.95378e-05
+[80]    train's l2: 0.00011355  valid's l2: 7.95384e-05
+[100]   train's l2: 0.000113526 valid's l2: 7.95413e-05
+[120]   train's l2: 0.000113502 valid's l2: 7.95413e-05
+[140]   train's l2: 0.000113478 valid's l2: 7.95439e-05
+[160]   train's l2: 0.000113453 valid's l2: 7.95475e-05
+[180]   train's l2: 0.000113427 valid's l2: 7.95494e-05
+[200]   train's l2: 0.000113401 valid's l2: 7.95533e-05
+[220]   train's l2: 0.000113375 valid's l2: 7.95549e-05
+[240]   train's l2: 0.000113352 valid's l2: 7.95548e-05
+[260]   train's l2: 0.000113325 valid's l2: 7.95586e-05
+[280]   train's l2: 0.000113301 valid's l2: 7.95615e-05
+[300]   train's l2: 0.000113278 valid's l2: 7.95625e-05
+Early stopping, best iteration is:
+[7]     train's l2: 0.000113634 valid's l2: 7.95313e-05
+
+Making predictions...
+
+Sample predictions:
+datetime    instrument
+2025-01-01  ^NSEI_RAW_10YRS    0.000510
+2025-01-02  ^NSEI_RAW_10YRS    0.000510
+2025-01-03  ^NSEI_RAW_10YRS    0.000510
+2025-01-06  ^NSEI_RAW_10YRS    0.000511
+2025-01-07  ^NSEI_RAW_10YRS    0.000511
+dtype: float64
+[4584:MainThread](2025-04-22 15:41:21,664) INFO - qlib.timer - [log.py:127] - Time cost: 2.022s | waiting `async_log` Done
+
+
+
+
+
+
+
+
+
+
+
+
+#############################################################################################################################################################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+(qlib_env) PS E:\Finance Internship\TASK_5\^NSEI> python .\model_raw.py
+[1620:MainThread](2025-04-22 15:37:42,580) INFO - qlib.Initialization - [config.py:420] - default_conf: client.
+[1620:MainThread](2025-04-22 15:37:42,582) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[1620:MainThread](2025-04-22 15:37:42,582) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': WindowsPath('C:/Users/ASUS/.qlib/qlib_data/NSEI_raw_10yrs')}
+
+Available instruments: {'market': 'all', 'filter_pipe': []}
+[1620:MainThread](2025-04-22 15:37:47,259) INFO - qlib.timer - [log.py:127] - Time cost: 0.362s | Loading data Done
+[1620:MainThread](2025-04-22 15:37:47,267) INFO - qlib.timer - [log.py:127] - Time cost: 0.002s | FilterCol Done
+E:\Finance Internship\qlib_env\lib\site-packages\qlib\data\dataset\processor.py:301: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df[self.cols] = X
+[1620:MainThread](2025-04-22 15:37:47,295) INFO - qlib.timer - [log.py:127] - Time cost: 0.025s | RobustZScoreNorm Done
+[1620:MainThread](2025-04-22 15:37:47,301) INFO - qlib.timer - [log.py:127] - Time cost: 0.001s | FilterCol Done
+[1620:MainThread](2025-04-22 15:37:47,328) INFO - qlib.timer - [log.py:127] - Time cost: 0.430s | Init data Done
+
+Dataset information:
+Training data shapes:
+('feature', 'KMID') shape: (2140,)
+('feature', 'KUP') shape: (2140,)
+('feature', 'KLOW') shape: (2140,)
+('feature', 'MA5') shape: (2140,)
+('feature', 'MA10') shape: (2140,)
+('feature', 'MA20') shape: (2140,)
+('feature', 'STD5') shape: (2140,)
+('feature', 'STD10') shape: (2140,)
+('feature', 'STD20') shape: (2140,)
+('feature', 'RESI5') shape: (2140,)
+('feature', 'RESI10') shape: (2140,)
+('feature', 'RESI20') shape: (2140,)
+('label', 'LABEL0') shape: (2140,)
+[1620:MainThread](2025-04-22 15:37:47,377) INFO - qlib.workflow - [exp.py:258] - Experiment 208382467731689026 starts running ...
+[1620:MainThread](2025-04-22 15:37:47,861) INFO - qlib.workflow - [recorder.py:345] - Recorder 7afe35dcf0bc4cdeb3d7c005879a33ae starts running under Experiment 208382467731689026 ...
+
+Training model...
+Training until validation scores don't improve for 150 rounds
+[20]    train's l2: 0.000113399 valid's l2: 7.95646e-05
+[40]    train's l2: 0.00011311  valid's l2: 7.9569e-05
+[60]    train's l2: 0.000112849 valid's l2: 7.95837e-05
+[80]    train's l2: 0.000112557 valid's l2: 7.96256e-05
+[100]   train's l2: 0.000112318 valid's l2: 7.96175e-05
+[120]   train's l2: 0.000112    valid's l2: 7.96625e-05
+[140]   train's l2: 0.000111753 valid's l2: 7.97109e-05
+Early stopping, best iteration is:
+[4]     train's l2: 0.000113595 valid's l2: 7.95299e-05
+
+Making predictions...
+
+Sample predictions:
+datetime    instrument
+2025-01-01  ^NSEI_RAW_10YRS    0.000509
+2025-01-02  ^NSEI_RAW_10YRS    0.000510
+2025-01-03  ^NSEI_RAW_10YRS    0.000510
+2025-01-06  ^NSEI_RAW_10YRS    0.000508
+2025-01-07  ^NSEI_RAW_10YRS    0.000509
+dtype: float64
+[1620:MainThread](2025-04-22 15:37:50,334) INFO - qlib.timer - [log.py:127] - Time cost: 1.664s | waiting `async_log` Done
+
+
+
+
+
+
+
+
+
+
+
+
+#############################################################################################################################################################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+(qlib_env) PS E:\Finance Internship\TASK_5\^NSEI> python .\model_raw.py
+[11492:MainThread](2025-04-22 15:36:36,094) INFO - qlib.Initialization - [config.py:420] - default_conf: client.
+[11492:MainThread](2025-04-22 15:36:36,098) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[11492:MainThread](2025-04-22 15:36:36,099) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': WindowsPath('C:/Users/ASUS/.qlib/qlib_data/NSEI_raw_10yrs')}
+
+Available instruments: {'market': 'all', 'filter_pipe': []}
+[11492:MainThread](2025-04-22 15:36:43,527) INFO - qlib.timer - [log.py:127] - Time cost: 0.269s | Loading data Done
+[11492:MainThread](2025-04-22 15:36:43,537) INFO - qlib.timer - [log.py:127] - Time cost: 0.009s | FilterCol Done
+E:\Finance Internship\qlib_env\lib\site-packages\qlib\data\dataset\processor.py:301: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df[self.cols] = X
+[11492:MainThread](2025-04-22 15:36:43,562) INFO - qlib.timer - [log.py:127] - Time cost: 0.025s | RobustZScoreNorm Done
+[11492:MainThread](2025-04-22 15:36:43,565) INFO - qlib.timer - [log.py:127] - Time cost: 0.000s | FilterCol Done
+[11492:MainThread](2025-04-22 15:36:43,577) INFO - qlib.timer - [log.py:127] - Time cost: 0.012s | RobustZScoreNorm Done
+[11492:MainThread](2025-04-22 15:36:43,579) INFO - qlib.timer - [log.py:127] - Time cost: 0.050s | fit & process data Done
+[11492:MainThread](2025-04-22 15:36:43,577) INFO - qlib.timer - [log.py:127] - Time cost: 0.012s | RobustZScoreNorm Done
+[11492:MainThread](2025-04-22 15:36:43,579) INFO - qlib.timer - [log.py:127] - Time cost: 0.050s | fit & process data Done
+[11492:MainThread](2025-04-22 15:36:43,577) INFO - qlib.timer - [log.py:127] - Time cost: 0.012s | RobustZScoreNorm Done
+[11492:MainThread](2025-04-22 15:36:43,579) INFO - qlib.timer - [log.py:127] - Time cost: 0.050s | fit & process data Done
+[11492:MainThread](2025-04-22 15:36:43,577) INFO - qlib.timer - [log.py:127] - Time cost: 0.012s | RobustZScoreNorm Done
+[11492:MainThread](2025-04-22 15:36:43,579) INFO - qlib.timer - [log.py:127] - Time cost: 0.050s | fit & process data Done
+[11492:MainThread](2025-04-22 15:36:43,577) INFO - qlib.timer - [log.py:127] - Time cost: 0.012s | RobustZScoreNorm Done
+[11492:MainThread](2025-04-22 15:36:43,579) INFO - qlib.timer - [log.py:127] - Time cost: 0.050s | fit & process data Done
+[11492:MainThread](2025-04-22 15:36:43,577) INFO - qlib.timer - [log.py:127] - Time cost: 0.012s | RobustZScoreNorm Done
+[11492:MainThread](2025-04-22 15:36:43,579) INFO - qlib.timer - [log.py:127] - Time cost: 0.050s | fit & process data Done
+[11492:MainThread](2025-04-22 15:36:43,577) INFO - qlib.timer - [log.py:127] - Time cost: 0.012s | RobustZScoreNorm Done       
+[11492:MainThread](2025-04-22 15:36:43,579) INFO - qlib.timer - [log.py:127] - Time cost: 0.050s | fit & process [11492:MainThread](2025-04-22 15:36:43,579) INFO - qlib.timer - [log.py:127] - Time cost: 0.050s | fit & process [11492:MainThread](2025-04-22 15:36:43,579) INFO - qlib.timer - [log.py:127] - Time cost: 0.050s | fit & proce data Done
+[11492:MainThread](2025-04-22 15:36:43,579) INFO - qlib.timer - [log.py:127] - Time cost: 0.320s | Init data Done
+
+Dataset information:
+Training data shapes:
+('feature', 'KMID') shape: (2140,)
+('feature', 'KUP') shape: (2140,)
+('feature', 'KLOW') shape: (2140,)
+('feature', 'STD20') shape: (2140,)
+('feature', 'RESI5') shape: (2140,)
+('feature', 'RESI10') shape: (2140,)
+('feature', 'RESI20') shape: (2140,)
+('label', 'LABEL0') shape: (2140,)
+[11492:MainThread](2025-04-22 15:36:43,626) INFO - qlib.workflow - [exp.py:258] - Experiment 208382467731689026 starts running ...
+[11492:MainThread](2025-04-22 15:36:44,323) INFO - qlib.workflow - [recorder.py:345] - Recorder 19d9333e7b0b48119cb729c46dca95e9 starts running under Experiment 208382467731689026 ...
+
+Training model...
+Training until validation scores don't improve for 100 rounds
+[20]    train's l2: 0.000111582 valid's l2: 7.996e-05
+[40]    train's l2: 0.000110011 valid's l2: 8.0278e-05
+[60]    train's l2: 0.00010817  valid's l2: 8.05853e-05
+[80]    train's l2: 0.000106726 valid's l2: 8.08964e-05
+[100]   train's l2: 0.000105159 valid's l2: 8.11508e-05
+Early stopping, best iteration is:
+[1]     train's l2: 0.000113574 valid's l2: 7.95478e-05
+
+Making predictions...
+
+Sample predictions:
+datetime    instrument
+2025-01-01  ^NSEI_RAW_10YRS    0.000508
+2025-01-02  ^NSEI_RAW_10YRS    0.000508
+2025-01-03  ^NSEI_RAW_10YRS    0.000491
+2025-01-06  ^NSEI_RAW_10YRS    0.000491
+2025-01-07  ^NSEI_RAW_10YRS    0.000508
+dtype: float64
+[11492:MainThread](2025-04-22 15:36:46,237) INFO - qlib.timer - [log.py:127] - Time cost: 1.005s | waiting `async_log` Done
+
+
+
+
+
+
+
+
+
+#############################################################################################################################################################################################################################################
+
+
+
+
+
+
+
+
+(qlib_env) PS E:\Finance Internship\TASK_5\^NSEI> python .\model_raw.py
+[26452:MainThread](2025-04-22 15:25:38,554) INFO - qlib.Initialization - [config.py:420] - default_conf: client.
+[26452:MainThread](2025-04-22 15:25:38,556) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[26452:MainThread](2025-04-22 15:25:38,558) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': WindowsPath('C:/Users/ASUS/.qlib/qlib_data/NSEI_raw_10yrs')}
+
+Available instruments: {'market': 'all', 'filter_pipe': []}
+[26452:MainThread](2025-04-22 15:25:42,528) INFO - qlib.timer - [log.py:127] - Time cost: 0.234s | Loading data Done
+[26452:MainThread](2025-04-22 15:25:42,534) INFO - qlib.timer - [log.py:127] - Time cost: 0.006s | FilterCol Done
+E:\Finance Internship\qlib_env\lib\site-packages\qlib\data\dataset\processor.py:301: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df[self.cols] = X
+[26452:MainThread](2025-04-22 15:25:42,562) INFO - qlib.timer - [log.py:127] - Time cost: 0.027s | RobustZScoreNorm Done
+[26452:MainThread](2025-04-22 15:25:42,562) INFO - qlib.timer - [log.py:127] - Time cost: 0.034s | fit & process data Done
+[26452:MainThread](2025-04-22 15:25:42,578) INFO - qlib.timer - [log.py:127] - Time cost: 0.283s | Init data Done
+
+Dataset information:
+Training data shapes:
+('feature', 'KMID') shape: (2140,)
+('feature', 'MA10') shape: (2140,)
+('feature', 'MA20') shape: (2140,)
+('feature', 'MA10') shape: (2140,)
+('feature', 'MA20') shape: (2140,)
+('feature', 'STD5') shape: (2140,)
+('feature', 'STD10') shape: (2140,)
+('feature', 'STD20') shape: (2140,)
+('feature', 'RESI5') shape: (2140,)
+('feature', 'RESI10') shape: (2140,)
+('feature', 'RESI20') shape: (2140,)
+('label', 'LABEL0') shape: (2140,)
+[26452:MainThread](2025-04-22 15:25:42,619) INFO - qlib.workflow - [exp.py:258] - Experiment 208382467731689026 starts running ...
+[26452:MainThread](2025-04-22 15:25:43,226) INFO - qlib.workflow - [recorder.py:345] - Recorder 9793e72d5623452dafc4c53fd372097b starts running under Experiment 208382467731689026 ...
+
+Training model...
+Training until validation scores don't improve for 100 rounds
+[20]    train's l2: 0.000111582 valid's l2: 7.996e-05
+[40]    train's l2: 0.000110011 valid's l2: 8.0278e-05
+[60]    train's l2: 0.00010817  valid's l2: 8.05853e-05
+[80]    train's l2: 0.000106726 valid's l2: 8.08964e-05
+[100]   train's l2: 0.000105159 valid's l2: 8.11508e-05
+Early stopping, best iteration is:
+[1]     train's l2: 0.000113574 valid's l2: 7.95478e-05
+
+Making predictions...
+
+Sample predictions:
+datetime    instrument
+2025-01-01  ^NSEI_RAW_10YRS    0.000508
+2025-01-02  ^NSEI_RAW_10YRS    0.000508
+2025-01-03  ^NSEI_RAW_10YRS    0.000491
+2025-01-06  ^NSEI_RAW_10YRS    0.000491
+2025-01-07  ^NSEI_RAW_10YRS    0.000508
+dtype: float64
+[26452:MainThread](2025-04-22 15:25:45,051) INFO - qlib.timer - [log.py:127] - Time cost: 0.916s | waiting `async_log` Done
+
+
+
+
+
+
+#############################################################################################################################################################################################################################################
+
+
+
+
+
+
+
+
+(qlib_env) PS E:\Finance Internship\TASK_5\^NSEI> python .\model_raw.py
+[20660:MainThread](2025-04-22 15:06:52,782) INFO - qlib.Initialization - [config.py:420] - default_conf: client.
+[20660:MainThread](2025-04-22 15:06:52,792) INFO - qlib.Initialization - [__init__.py:74] - qlib successfully initialized based on client settings.
+[20660:MainThread](2025-04-22 15:06:52,792) INFO - qlib.Initialization - [__init__.py:76] - data_path={'__DEFAULT_FREQ': WindowsPath('C:/Users/ASUS/.qlib/qlib_data/NSEI_raw_10yrs')}
+[20660:MainThread](2025-04-22 15:06:57,092) INFO - qlib.timer - [log.py:127] - Time cost: 0.220s | Loading data Done
+[20660:MainThread](2025-04-22 15:06:57,097) INFO - qlib.timer - [log.py:127] - Time cost: 0.003s | FilterCol Done
+E:\Finance Internship\qlib_env\lib\site-packages\qlib\data\dataset\processor.py:301: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df[self.cols] = X
+[20660:MainThread](2025-04-22 15:06:57,133) INFO - qlib.timer - [log.py:127] - Time cost: 0.037s | RobustZScoreNorm Done
+[20660:MainThread](2025-04-22 15:06:57,135) INFO - qlib.timer - [log.py:127] - Time cost: 0.001s | FilterCol Done
+[20660:MainThread](2025-04-22 15:06:57,147) INFO - qlib.timer - [log.py:127] - Time cost: 0.011s | RobustZScoreNorm Done
+[20660:MainThread](2025-04-22 15:06:57,148) INFO - qlib.timer - [log.py:127] - Time cost: 0.054s | fit & process data Done
+[20660:MainThread](2025-04-22 15:06:57,149) INFO - qlib.timer - [log.py:127] - Time cost: 0.276s | Init data Done
+
+Dataset information:
+Training data shapes:
+('feature', 'KMID') shape: (2140,)
+('feature', 'KUP') shape: (2140,)
+('feature', 'KLOW') shape: (2140,)
+('feature', 'MA5') shape: (2140,)
+unning ...
+[20660:MainThread](2025-04-22 15:06:57,484) INFO - qlib.workflow - [recorder.py:345] - Recorder dc0a8b98ea8c4649a37849f56251e3f8 starts running under Experiment 208382467731689026 ...
+
+Training model...
+Training until validation scores don't improve for 50 rounds
+[20]    train's l2: 0.000112592 valid's l2: 7.97742e-05
+[40]    train's l2: 0.000111551 valid's l2: 8.00519e-05
+Early stopping, best iteration is:
+[1]     train's l2: 0.000113598 valid's l2: 7.95526e-05
+
+Making predictions...
+
+Sample predictions:
+datetime    instrument
+2025-01-01  ^NSEI_RAW_10YRS    0.000508
+2025-01-02  ^NSEI_RAW_10YRS    0.000508
+2025-01-03  ^NSEI_RAW_10YRS    0.000508
+2025-01-06  ^NSEI_RAW_10YRS    0.000508
+2025-01-07  ^NSEI_RAW_10YRS    0.000508
+dtype: float64
+[20660:MainThread](2025-04-22 15:06:58,355) INFO - qlib.timer - [log.py:127] - Time cost: 0.378s | waiting `async_log` Done

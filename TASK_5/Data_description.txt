@@ -1,0 +1,60 @@
+### Alpha158
+- **Description**: A tabular dataset with carefully engineered features designed by human experts.
+- **Features Include**:
+  - Basic price/volume features
+  - Technical indicators
+  - Rolling statistics (mean, standard deviation, correlation, etc.)
+- **Total Alpha Factors**: 158
+
+#### Key Characteristics:
+- Less spatial relationships between different features due to independent engineering.
+- Features are normalized and processed to remove unit effects.
+- Includes various technical indicators such as:
+  - ROC (Rate of Change)
+  - MA (Moving Average)
+  - STD (Standard Deviation)
+  - BETA (Price change rate)
+  - RSI-like indicators
+  - Volume-based indicators
+  - And many more.
+
+### Alpha360
+- **Description**: A dataset focused on raw price and volume data with minimal feature engineering.
+- **Includes**:
+  - Historical price data (open, high, low, close)
+  - Volume data
+- **Data Span**: 60 days of history
+- **Total Features**: 360 derived from raw inputs.
+
+#### Key Characteristics:
+- Strong spatial relationships between features in the time dimension.
+- Features are normalized by the latest price and volume data.
+- More suitable for models that can learn temporal patterns (like neural networks).
+
+#### Raw Data Includes:
+- Normalized closing prices
+- Normalized opening prices
+- Normalized high prices
+- Normalized low prices
+- Normalized volume
+- VWAP (Volume-Weighted Average Price)
+
+to acces that data you can use the following code:
+
+# For Alpha158
+from qlib.contrib.data.handler import Alpha158
+handler = Alpha158(
+    instruments='csi300',
+    start_time='2010-01-01',
+    end_time='2017-12-31',
+    freq='day'
+)
+
+# For Alpha360
+from qlib.contrib.data.handler import Alpha360
+handler = Alpha360(
+    instruments='csi300',
+    start_time='2010-01-01',
+    end_time='2017-12-31',
+    freq='day'
+)

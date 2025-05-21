@@ -1,0 +1,339 @@
+diff --git a/TASK_4/Notes_241018_213302.pdf b/TASK_4/Notes_241018_213302.pdf
+deleted file mode 100644
+index 017c451..0000000
+--- a/TASK_4/Notes_241018_213302.pdf
++++ /dev/null
+@@ -1 +0,0 @@
+-
+diff --git a/TASK_4/__pycache__/order.cpython-39.pyc b/TASK_4/__pycache__/order.cpython-39.pyc
+deleted file mode 100644
+index 75bda20..0000000
+Binary files a/TASK_4/__pycache__/order.cpython-39.pyc and /dev/null differ
+diff --git a/TASK_4/main.py b/TASK_4/main.py
+deleted file mode 100644
+index ca8181b..0000000
+--- a/TASK_4/main.py
++++ /dev/null
+@@ -1,39 +0,0 @@
+-from order import Position,Order
+-
+-def main():
+-    # Create a Position instance
+-    position = Position(trade_id=111)
+-
+-    # Create Order instances
+-    order1 = Order(trade_id=111, pending_qty=0, executed_qty=15, 
+-                   status='executed', order_type='entry', order_side='buy', symbol='TCS')
+-    order2 = Order(trade_id=111, pending_qty=0, executed_qty=5, 
+-                   status='executed', order_type='entry', order_side='buy', symbol='TCS')
+-    order3 = Order(trade_id=111, pending_qty=0, executed_qty=5, 
+-                   status='executed', order_type='exit', order_side='sell', symbol='TCS')
+-    # order4 = Order(trade_id=111, pending_qty=0, executed_qty=5, 
+-    #                status='executed', order_type='entry', order_side='buy', symbol='TCS')
+-    # order5 = Order(trade_id=111, pending_qty=0, executed_qty=5, 
+-    #                status='pending', order_type='entry', order_side='buy', symbol='TCS')
+-    # Print the initial state
+-    print(position)
+-
+-    # Add the executed orders to the position
+-    position.add_order(order1)
+-    position.add_order(order3)  # This will check for countering first
+-    position.add_order(order2)
+-    # position.add_order(order4)  # This will also check for countering first
+-    # position.add_order(order5)
+-
+-    # Print the updated position and order statuses
+-    print(position)
+-    print(order1)
+-    print(order2)
+-    print(order3)
+-    # print(order4)
+-    # print(order5)
+-    print("Settled Orders:", position.settled_orders)
+-
+-if __name__ == "__main__":
+-    main()
+-
+diff --git a/TASK_4/order.py b/TASK_4/order.py
+deleted file mode 100644
+index d7e8600..0000000
+--- a/TASK_4/order.py
++++ /dev/null
+@@ -1,140 +0,0 @@
+-class Position:
+-    def __init__(self, trade_id, poston_qty=0, symbol=None):
+-        self.trade_id = trade_id  # Unique identifier for the trade
+-        self.poston_qty = poston_qty  # Current quantity in the position
+-        self.symbol = symbol  # Symbol for the position
+-        self.orders = {'entry': [], 'exit': []}  # Dictionary to track added orders: {'entry': entry queue, 'exit': exit queue}
+-        self.settled_orders = {'entry': [], 'exit': []}  # Dictionary to track settled orders: {'entry': entry queue, 'exit': exit queue}
+-
+-    def add_order(self, order):
+-        """Add an order to this position if the trade_id matches."""
+-        if self.can_add_order(order):
+-            print(f"Order can be added to the position: {order}")
+-            
+-            # Check for countering before adding the order
+-            self.counter_position(order)
+-            
+-            # If the order is not settled, update the position
+-            if order.status != 'settled':
+-                self.update_position(order.executed_qty)
+-            
+-            # Track the added order in the appropriate queue
+-            if order.order_type == 'entry':
+-                self.orders['entry'].append(order)
+-            elif order.order_type == 'exit':
+-                self.orders['exit'].append(order)
+-            
+-            # Set the symbol if it's not already set
+-            if self.symbol is None:
+-                self.symbol = order.symbol
+-        else:
+-            print(f"Order cannot be added to the position: {order}")
+-
+-    def can_add_order(self, order):
+-        """Check if the order can be added to this position based on trade_id and symbol."""
+-        return self.trade_id == order.trade_id and (self.symbol == order.symbol or self.symbol is None)
+-
+-    def update_position(self, executed_qty):
+-        """Update the position quantity based on the executed order quantity."""
+-        self.poston_qty += executed_qty
+-
+-    def counter_position(self, new_order):
+-        """Counter the position quantity based on the new order quantity."""
+-        if new_order.order_type == 'entry' and new_order.order_side == 'buy':
+-            queue = self.orders['exit']
+-            settled_queue = self.settled_orders['exit']
+-        elif new_order.order_type == 'exit' and new_order.order_side == 'sell':
+-            queue = self.orders['entry']
+-            settled_queue = self.settled_orders['entry']
+-        else:
+-            print("Invalid order type or side.")
+-            return
+-
+-        for existing_order in queue:
+-            if existing_order.status == 'executed':
+-                # Counter the order regardless of executed quantity
+-                counter_qty = min(existing_order.executed_qty, new_order.executed_qty)
+-                self.poston_qty -= counter_qty
+-                existing_order.settled_qty += counter_qty
+-                new_order.settled_qty += counter_qty
+-                existing_order.executed_qty -= counter_qty
+-                new_order.executed_qty -= counter_qty
+-
+-                if existing_order.executed_qty == 0:
+-                    existing_order.status = 'settled'  # Mark the existing order as settled
+-                    settled_queue.append(existing_order.__dict__)  # Move to settled orders
+-                if new_order.executed_qty == 0:
+-                    new_order.status = 'settled'  # Mark the new order as settled
+-                    settled_queue.append(new_order.__dict__)  # Move to settled orders
+-
+-                print(f"Countered order: {existing_order} with new order: {new_order}")
+-                if new_order.status == 'settled':
+-                    return  # Exit after countering
+-
+-        # If no matching order is found
+-        print("No matching order found to counter.")
+-
+-    def __str__(self):
+-        return (f"Position - Trade ID: {self.trade_id}, "
+-                f"Poston Qty: {self.poston_qty}, "
+-                f"Symbol: {self.symbol}, "
+-                f"Orders: {len(self.orders['entry']) + len(self.orders['exit'])}, "
+-                f"Settled Orders: {len(self.settled_orders['entry']) + len(self.settled_orders['exit'])}")
+-
+-
+-class Order:
+-    def __init__(self, trade_id, pending_qty, executed_qty, status, order_type, order_side, symbol):
+-        self.trade_id = trade_id  # Unique identifier for the trade
+-        self.pending_qty = pending_qty  # Quantity still pending
+-        self.executed_qty = executed_qty  # Quantity that has been executed
+-        self.status = status  # Status of the order (e.g., executed, pending, settled, failed)
+-        self.order_type = order_type  # Type of order (e.g., entry, exit)
+-        self.order_side = order_side  # Side of the order (e.g., buy, sell)
+-        self.symbol = symbol  # Symbol for the order
+-        self.settled_qty = 0  # Quantity that has been settled
+-
+-    def __str__(self):
+-        return (f"Order - Trade ID: {self.trade_id}, "
+-                f"Pending Qty: {self.pending_qty}, "
+-                f"Executed Qty: {self.executed_qty}, "
+-                f"Settled Qty: {self.settled_qty}, "
+-                f"Status: {self.status}, "
+-                f"Type: {self.order_type}, "
+-                f"Order Side: {self.order_side}, "
+-                f"Symbol: {self.symbol}")
+-
+-
+-# Example Usage
+-
+-# Create a Position instance
+-position = Position(trade_id=111)
+-
+-# Create Order instances
+-order1 = Order(trade_id=111, pending_qty=0, executed_qty=15, 
+-               status='executed', order_type='entry', order_side='buy', symbol='TCS')
+-order3 = Order(trade_id=111, pending_qty=0, executed_qty=5, 
+-               status='executed', order_type='exit', order_side='sell', symbol='TCS')
+-order4 = Order(trade_id=111, pending_qty=0, executed_qty=85, 
+-               status='executed', order_type='exit', order_side='sell', symbol='TCS')
+-order2 = Order(trade_id=111, pending_qty=0, executed_qty=25, 
+-               status='executed', order_type='entry', order_side='buy', symbol='TCS')
+-order5 = Order(trade_id=111, pending_qty=0, executed_qty=5, 
+-               status='executed', order_type='entry', order_side='buy', symbol='TCS')
+-
+-# Print the initial state
+-print(position)
+-
+-# Add the executed orders to the position
+-position.add_order(order1)
+-position.add_order(order3)  # This will check for countering first
+-position.add_order(order4)  # This will also check for countering first
+-position.add_order(order2)
+-position.add_order(order5)  # This will also check for countering first
+-# Print the updated position and order statuses
+-print(position)
+-print(order1)
+-print(order3)
+-print(order4)
+-print(order2)
+-print(order5)
+-print("Settled Orders:", position.settled_orders)
+diff --git a/TASK_4/order_new.py b/TASK_4/order_new.py
+deleted file mode 100644
+index 139a7a4..0000000
+--- a/TASK_4/order_new.py
++++ /dev/null
+@@ -1,131 +0,0 @@
+-class Position:
+-    def __init__(self, trade_id, poston_qty=0, symbol=None):
+-        self.trade_id = trade_id  # Unique identifier for the trade
+-        self.poston_qty = poston_qty  # Current quantity in the position
+-        self.symbol = symbol  # Symbol for the position
+-        self.orders = []  # List to track added orders
+-        self.settled_orders = []  # List to track settled orders
+-
+-    def add_order(self, order):
+-        """Add an order to this position if the trade_id matches and the order status is 'executed'."""
+-        if self.can_add_order(order) and order.status == 'executed':
+-            print(f"Order can be added to the position: {order}")
+-            
+-            # Check for countering before adding the order
+-            self.counter_position(order)
+-            
+-            # If the order is not settled, update the position
+-            if order.status != 'settled':
+-                self.update_position(order.executed_qty)
+-            
+-            self.orders.append(order)  # Track the added order
+-            
+-            # Set the symbol if it's not already set
+-            if self.symbol is None:
+-                self.symbol = order.symbol
+-        else:
+-            print(f"Order cannot be added to the position: {order}")
+-
+-    def can_add_order(self, order):
+-        """Check if the order can be added to this position based on trade_id and symbol."""
+-        return self.trade_id == order.trade_id and (self.symbol == order.symbol or self.symbol is None)
+-
+-    def update_position(self, executed_qty):
+-        """Update the position quantity based on the executed order quantity."""
+-        self.poston_qty += executed_qty
+-
+-    def counter_position(self, new_order):
+-        """Counter the position quantity based on the new order quantity."""
+-        # First, try to find an order with the same quantity to counter
+-        for existing_order in self.orders:
+-            if (existing_order.order_type == 'entry' and existing_order.order_side == 'buy' and 
+-                existing_order.status == 'executed' and 
+-                existing_order.executed_qty == new_order.executed_qty and
+-                new_order.order_type == 'exit' and new_order.order_side == 'sell'):
+-                
+-                # Fully counter the entry order
+-                self.poston_qty -= existing_order.executed_qty
+-                existing_order.status = 'settled'  # Mark the entry order as settled
+-                self.settled_orders.append(existing_order.__dict__)  # Move to settled orders
+-                new_order.status = 'settled'  # Mark the new order as settled
+-                self.settled_orders.append(new_order.__dict__)  # Move to settled orders
+-                print(f"Countered entry order: {existing_order} with new order: {new_order}")
+-                return  # Exit after countering
+-
+-            elif (existing_order.order_type == 'exit' and existing_order.order_side == 'sell' and 
+-                  existing_order.status == 'executed' and 
+-                  existing_order.executed_qty == new_order.executed_qty and
+-                  new_order.order_type == 'entry' and new_order.order_side == 'buy'):
+-                
+-                # Fully counter the exit order
+-                self.poston_qty -= existing_order.executed_qty
+-                existing_order.status = 'settled'  # Mark the exit order as settled
+-                self.settled_orders.append(existing_order.__dict__)  # Move to settled orders
+-                new_order.status = 'settled'  # Mark the new order as settled
+-                self.settled_orders.append(new_order.__dict__)  # Move to settled orders
+-                print(f"Countered exit order: {existing_order} with new order: {new_order}")
+-                return  # Exit after countering
+-
+-        # If no matching order is found, counter with the first available order
+-        for existing_order in self.orders:
+-            if (existing_order.order_type == 'entry' and existing_order.order_side == 'buy' and 
+-                existing_order.status == 'executed' and
+-                new_order.order_type == 'exit' and new_order.order_side == 'sell'):
+-                
+-                # Partially counter the entry order
+-                if existing_order.executed_qty >= new_order.executed_qty:
+-                    self.poston_qty -= new_order.executed_qty
+-                    existing_order.executed_qty -= new_order.executed_qty
+-                    new_order.status = 'settled'  # Mark the new order as settled
+-                    self.settled_orders.append(new_order.__dict__)  # Move to settled orders
+-                    if existing_order.executed_qty == 0:
+-                        existing_order.status = 'settled'  # Mark the entry order as settled
+-                        self.settled_orders.append(existing_order.__dict__)  # Move to settled orders
+-                    print(f"Partially countered entry order: {existing_order} with new order: {new_order}")
+-                    return  # Exit after countering
+-
+-            elif (existing_order.order_type == 'exit' and existing_order.order_side == 'sell' and 
+-                  existing_order.status == 'executed' and
+-                  new_order.order_type == 'entry' and new_order.order_side == 'buy'):
+-                
+-                # Partially counter the exit order
+-                if existing_order.executed_qty >= new_order.executed_qty:
+-                    self.poston_qty -= new_order.executed_qty
+-                    existing_order.executed_qty -= new_order.executed_qty
+-                    new_order.status = 'settled'  # Mark the new order as settled
+-                    self.settled_orders.append(new_order.__dict__)  # Move to settled orders
+-                    if existing_order.executed_qty == 0:
+-                        existing_order.status = 'settled'  # Mark the exit order as settled
+-                        self.settled_orders.append(existing_order.__dict__)  # Move to settled orders
+-                    print(f"Partially countered exit order: {existing_order} with new order: {new_order}")
+-                    return  # Exit after countering
+-
+-        # If no matching order is found
+-        print("No matching order found to counter.")
+-
+-    def __str__(self):
+-        return (f"Position - Trade ID: {self.trade_id}, "
+-                f"Poston Qty: {self.poston_qty}, "
+-                f"Symbol: {self.symbol}, "
+-                f"Orders: {len(self.orders)}, "
+-                f"Settled Orders: {len(self.settled_orders)}")
+-
+-
+-class Order:
+-    def __init__(self, trade_id, pending_qty, executed_qty, status, order_type, order_side, symbol):
+-        self.trade_id = trade_id  # Unique identifier for the trade
+-        self.pending_qty = pending_qty  # Quantity still pending
+-        self.executed_qty = executed_qty  # Quantity that has been executed
+-        self.status = status  # Status of the order (e.g., executed, pending, settled, failed)
+-        self.order_type = order_type  # Type of order (e.g., entry, exit)
+-        self.order_side = order_side  # Side of the order (e.g., buy, sell)
+-        self.symbol = symbol  # Symbol for the order
+-
+-    def __str__(self):
+-        return (f"Order - Trade ID: {self.trade_id}, "
+-                f"Pending Qty: {self.pending_qty}, "
+-                f"Executed Qty: {self.executed_qty}, "
+-                f"Status: {self.status}, "
+-                f"Type: {self.order_type}, "
+-                f"Order Side: {self.order_side}, "
+-                f"Symbol: {self.symbol}")

@@ -1,0 +1,21 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    ../TASK_4/Notes_241018_213302.pdf
+	deleted:    ../TASK_4/__pycache__/order.cpython-39.pyc
+	deleted:    ../TASK_4/main.py
+	deleted:    ../TASK_4/order.py
+	deleted:    ../TASK_4/order_new.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	../TASK4/
+	../TASK_4_position_manager/
+	./
+	../git/
+	../qlib_env/
+
+no changes added to commit (use "git add" and/or "git commit -a")

@@ -1,0 +1,39 @@
+Understanding the Label: Ref($close, -2)/Ref($close, -1) - 1
+============================================================
+
+1. What does the formula mean?
+------------------------------
+- Ref($close, -2): The closing price 2 days in the future from today (t+2).
+- Ref($close, -1): The closing price 1 day in the future from today (t+1).
+- The formula: (Ref($close, -2) / Ref($close, -1)) - 1
+  This calculates the percentage return from day t+1 to day t+2.
+
+2. Why is this used as a label?
+-------------------------------
+- In real trading, you can only act on information available up to today (t).
+- If you make a decision at the close of day t, the earliest you can enter a position is at the open (or close) of day t+1.
+- The return you can actually realize is from the close of t+1 to the close of t+2.
+- By assigning this return as the label for day t, you train your model to predict the return you could realize if you act at t+1.
+
+3. Example Table
+----------------
+Suppose you have the following closing prices:
+
+| Date | Close (t) | Close (t+1) | Close (t+2) | Label for t ( (t+2)/(t+1) - 1 ) |
+|------|-----------|-------------|-------------|----------------------------------|
+|  1   |   100     |    102      |    105      |      (105/102) - 1 = 0.0294      |
+|  2   |   102     |    105      |    103      |      (103/105) - 1 = -0.0190     |
+|  3   |   105     |    103      |    108      |      (108/103) - 1 = 0.0485      |
+
+- For row 1 (date 1), the label is the return from day 2 to day 3, which you could only realize if you act at day 2.
+
+4. Why not use (Ref($close, -1)/$close - 1)?
+--------------------------------------------
+- (Ref($close, -1)/$close - 1) is the return from today (t) to tomorrow (t+1).
+- If you use this as a label, you would be using information from the future (t+1) to train your model at time t, which introduces lookahead bias.
+- The Qlib convention avoids this by always predicting the return you could realize after you make your decision.
+
+5. Summary
+----------
+- The label Ref($close, -2)/Ref($close, -1) - 1 is used to ensure your model's predictions are realistic and do not use future information.
+- It aligns your model's output with what you could actually trade on in a real-world scenario.

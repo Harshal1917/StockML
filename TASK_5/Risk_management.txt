@@ -1,0 +1,210 @@
+# Qlib Risk Management Guide
+
+## 1. Understanding Risk Components
+
+### 1.1 Types of Returns
+1. Benchmark Return
+   - Market index return (e.g., CSI300 Index - SH000300)
+   - Reference for performance comparison
+   - Example: CSI300 up 1.2% = benchmark return of +1.2%
+
+2. Portfolio Return
+   - Return from your model's predictions
+   - Actual trading performance
+   - Example: Portfolio up 1.8% = portfolio return of +1.8%
+
+3. Excess Return
+   - Difference between portfolio and benchmark returns
+   - Formula: Portfolio Return - Benchmark Return
+   - Example: +1.8% - (+1.2%) = +0.6% excess return
+
+### 1.2 Risk Metrics
+1. Tracking Error
+   - Measures consistency of excess returns
+   - Formula: Standard Deviation of Excess Returns
+   - Risk levels:
+     * Safe: < 1%
+     * Warning: 1-2%
+     * Danger: > 2%
+
+2. Information Ratio (IR)
+   - Risk-adjusted return metric
+   - Formula: Average Excess Return / Tracking Error
+   - Classifications:
+     * High IR: > 1.0 (excellent)
+     * Medium IR: 0.5-1.0 (good)
+     * Low IR: < 0.5 (poor)
+
+## 2. Risk Management Framework
+
+### 2.1 Model Diversification Strategy
+```python
+model_portfolio = {
+    # Low Risk (40% allocation)
+    "LightGBM": {
+        "allocation": 25%,
+        "IR": 1.0164,
+        "risk_level": "low"
+    },
+    "Linear": {
+        "allocation": 15%,
+        "IR": 0.9209,
+        "risk_level": "low"
+    },
+
+    # Medium Risk (35% allocation)
+    "LSTM": {
+        "allocation": 20%,
+        "IR": 0.5561,
+        "risk_level": "medium"
+    },
+    "GRU": {
+        "allocation": 15%,
+        "IR": 0.5160,
+        "risk_level": "medium"
+    },
+
+    # High Risk (25% allocation)
+    "Transformer": {
+        "allocation": 15%,
+        "IR": 0.3970,
+        "risk_level": "high"
+    },
+    "HIST": {
+        "allocation": 10%,
+        "IR": 1.3726,
+        "risk_level": "high"
+    }
+}
+```
+
+### 2.2 Position Sizing Rules
+1. Based on IR:
+   - High IR (>1.0): Maximum 5% position size
+   - Medium IR (0.5-1.0): Maximum 3% position size
+   - Low IR (<0.5): Maximum 1% position size
+
+2. Based on Risk Level:
+   - Low Risk Models: 100% of max position size
+   - Medium Risk Models: 75% of max position size
+   - High Risk Models: 50% of max position size
+
+## 3. Daily Risk Management Process
+
+### 3.1 Daily Monitoring Checklist
+1. Return Metrics
+   - Check Portfolio Returns
+   - Compare to Benchmark
+   - Calculate Excess Returns
+
+2. Risk Metrics
+   - Calculate Tracking Error
+   - Monitor Volatility
+   - Check Drawdown Levels
+
+3. Model Performance
+   - Review IR Ratios
+   - Check Win Rates
+   - Verify Prediction Accuracy
+
+### 3.2 Risk Response Actions
+```python
+risk_responses = {
+    "High Risk": {
+        "actions": [
+            "Reduce position sizes by 25-50%",
+            "Shift allocation to lower risk models",
+            "Increase cash holdings to 20-30%"
+        ]
+    },
+    "Medium Risk": {
+        "actions": [
+            "Maintain current positions",
+            "Regular rebalancing",
+            "Normal monitoring"
+        ]
+    },
+    "Low Risk": {
+        "actions": [
+            "Consider position increases",
+            "Explore new opportunities",
+            "Optimize model parameters"
+        ]
+    }
+}
+```
+
+## 4. Implementation Example
+
+```python
+class QlibRiskManager:
+    def __init__(self):
+        self.risk_limits = {
+            "max_tracking_error": 0.02,  # 2%
+            "max_position_size": 0.05,   # 5%
+            "max_model_allocation": 0.30  # 30%
+        }
+        
+    def daily_risk_check(self):
+        # Calculate risk metrics
+        tracking_error = self.calculate_tracking_error()
+        portfolio_risk = self.calculate_portfolio_risk()
+        
+        # Risk assessment
+        if tracking_error > self.risk_limits["max_tracking_error"]:
+            self.reduce_risk()
+            
+    def reduce_risk(self):
+        # Risk reduction actions
+        self.reduce_position_sizes()
+        self.shift_to_safer_models()
+        self.increase_cash_buffer()
+```
+
+## 5. Best Practices
+
+### 5.1 Regular Reviews
+- Daily risk monitoring
+- Weekly performance assessment
+- Monthly strategy evaluation
+- Quarterly model retraining
+
+### 5.2 Risk Documentation
+- Track all risk events
+- Record management decisions
+- Maintain risk logs
+- Document model performance
+
+### 5.3 Risk Limits
+- Clear risk boundaries
+- Defined action triggers
+- Stop-loss levels
+- Position size limits
+
+### 5.4 Model Management
+- Diversified model types
+- Balanced risk levels
+- Regular retraining
+- Performance monitoring
+
+## 6. Benefits of Risk Management
+
+1. Capital Protection
+   - Prevents large losses
+   - Maintains portfolio stability
+   - Ensures long-term survival
+
+2. Performance Optimization
+   - Better risk-adjusted returns
+   - More consistent performance
+   - Reduced volatility
+
+3. Systematic Approach
+   - Clear decision framework
+   - Objective risk assessment
+   - Consistent implementation
+
+4. Portfolio Resilience
+   - Better drawdown management
+   - Improved recovery capability
+   - Enhanced long-term returns

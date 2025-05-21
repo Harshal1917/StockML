@@ -1,0 +1,56 @@
+qlib_env\Scripts\activate
+
+
+1.Machine Learning for Stock Prediction
+    Time series forecasting for stock prices
+    Feature engineering and selection
+    Multiple model support (GBDT, Neural Networks, etc.)
+    Model training and validation workflows
+
+2.Reinforcement Learning (RL)
+    Order execution optimization
+    Portfolio management
+    Trading strategy development
+    Located in examples/rl/ and examples/rl_order_execution/
+
+3.Model Interpretation
+    Feature importance analysis
+    Model behavior explanation
+    Risk factor analysis
+    Located in examples/model_interpreter/
+
+4.Portfolio Optimization
+    AI-driven portfolio construction
+    Risk management
+    Asset allocation
+    Located in examples/portfolio/
+
+5.High-Frequency Trading
+    Fast data processing
+    Real-time prediction
+    Order book analysis
+    Located in examples/highfreq/
+
+6.Advanced AI Features
+    Meta-learning capabilities
+    Ensemble methods
+    Model rolling/updating
+    Hyperparameter optimization
+
+
+7.Advanced Analysis Features
+    Backtesting of strategies
+    Performance analysis
+    Risk metrics calculation
+    Transaction cost analysis
+
+8.Online Serving
+    Real-time model deployment
+    Online prediction services
+    Model updating
+    Located in examples/online_srv/
+
+9.Dynamic Benchmarking
+    Performance comparison
+    Strategy evaluation
+    Located in examples/benchmarks_dynamic/

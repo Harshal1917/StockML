@@ -1,0 +1,9 @@
+echo "torch
+xgboost
+catboost
+lightgbm
+scikit-learn
+pandas
+numpy
+pyqlib" > requirements.txt
+statsmodels

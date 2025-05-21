@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+-use this E:\Finance Internship\TASK_5\qlib folder to explore in every question this is library that I am working on
+
+-Use https://qlib.readthedocs.io/en/latest/ this documentation of Qlib
+
+# Your rule content
+
+- You can @ files here
+- You can use markdown but dont have to

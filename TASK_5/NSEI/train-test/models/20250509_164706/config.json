@@ -1,0 +1,72 @@
+{
+  "model": {
+    "class": "LGBModel",
+    "module_path": "qlib.contrib.model.gbdt",
+    "kwargs": {
+      "loss": "mse",
+      "learning_rate": 0.01,
+      "num_leaves": 31,
+      "num_boost_round": 1000,
+      "max_depth": 8,
+      "feature_fraction": 0.85,
+      "bagging_fraction": 0.85,
+      "bagging_freq": 5,
+      "verbose": true,
+      "early_stopping_rounds": 50,
+      "eval_metric": [
+        "l2",
+        "mae"
+      ],
+      "min_data_in_leaf": 30,
+      "lambda_l1": 0.05,
+      "lambda_l2": 0.05,
+      "objective": "regression",
+      "force_row_wise": true
+    }
+  },
+  "dataset": {
+    "instruments": [
+      "^NSEI_RAW_10YRS"
+    ],
+    "time_ranges": {
+      "train": [
+        "2015-04-24",
+        "2022-12-31"
+      ],
+      "valid": [
+        "2023-01-01",
+        "2023-12-31"
+      ],
+      "test": [
+        "2024-01-01",
+        "2024-12-31"
+      ]
+    },
+    "features": {
+      "returns": {
+        "windows": [
+          1
+        ],
+        "feature": [
+          "($close - Ref($close, 1)) / Ref($close, 1)"
+        ]
+      },
+      "volatility": {
+        "windows": [
+          5
+        ],
+        "feature": [
+          "Std($close, 5)"
+        ]
+      },
+      "volume_change": {
+        "windows": [
+          1
+        ],
+        "feature": [
+          "($volume - Ref($volume, 1)) / Ref($volume, 1)"
+        ]
+      }
+    }
+  }
+}

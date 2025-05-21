@@ -1,0 +1,43 @@
+1. Comparison in Qlib Models
+Best Performing Models (Alpha158):
+
+**DoubleEnsemble:**
+- AR: 0.1158 (11.58% yearly return)
+- IR: 1.3432 (excellent risk-adjusted return)
+
+**LightGBM:**
+- AR: 0.0901 (9.01% yearly return)
+- IR: 1.0164 (excellent risk-adjusted return)
+
+**MLP:**
+- AR: 0.0895 (8.95% yearly return)
+- IR: 1.1408 (excellent risk-adjusted return)
+
+**Why Both Metrics Matter:**
+
+- AR alone doesn't consider risk
+- Higher AR might come with higher risk
+- Doesn't tell you about consistency
+- IR considers both return and risk
+- Shows how much return you get per unit of risk
+- Better for comparing strategies
+
+**Together they provide:**
+- AR: Absolute performance measure
+- IR: Risk-adjusted performance measure
+
+2. Usage in Model Selection
+
+**Risk Tolerance:**
+- High risk tolerance: Focus on AR
+- Low risk tolerance: Focus on IR
+
+**Investment Goals:**
+- Maximum returns: Look at AR
+- Stable returns: Look at IR
+
+**Best Practice:**
+- Consider both metrics together
+- High AR + High IR = Ideal model
+
+**Example:** DoubleEnsemble (High AR and IR)
